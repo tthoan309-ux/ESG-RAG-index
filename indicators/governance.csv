@@ -1,0 +1,16 @@
+indicator_id,pillar,indicator,question,keywords
+G1,G,Board structure,Does the company disclose board composition independence or committees?,board composition|independent director|board committee|supervisory board|hội đồng quản trị|hđqt|ban kiểm soát|ban điều hành|mô hình quản trị
+G2,G,Board diversity,Does the company disclose board diversity gender skills or tenure?,board diversity|female director|board skills|board tenure
+G3,G,Executive compensation,Does the company disclose executive remuneration or compensation policy?,executive compensation|remuneration|bonus|incentive
+G4,G,Shareholder rights,Does the company disclose shareholder rights voting or general meeting practices?,shareholder rights|voting|general meeting|agm|cổ đông|đại hội đồng cổ đông|biểu quyết
+G5,G,Business ethics,Does the company disclose code of conduct ethics or integrity policies?,code of conduct|ethics|integrity|business conduct
+G6,G,Anti-corruption,Does the company disclose anti-bribery anti-corruption policies training or incidents?,anti-corruption|anti bribery|bribery|corruption|fraud
+G7,G,Risk management,Does the company disclose enterprise risk management processes?,risk management|enterprise risk|risk committee|internal control|quản trị rủi ro|rủi ro|kiểm soát nội bộ
+G8,G,Audit and assurance,Does the company disclose audit committee external audit or assurance practices?,audit committee|external auditor|assurance|internal audit
+G9,G,Tax transparency,Does the company disclose tax policy payments or tax governance?,tax policy|tax payment|tax governance|effective tax
+G10,G,Related-party transactions,Does the company disclose related-party transactions and oversight?,related party|related-party|conflict of interest|bên liên quan|giao dịch liên quan|xung đột lợi ích
+G11,G,Sustainability governance,Does the company disclose ESG governance board oversight or ESG committees?,esg governance|sustainability committee|board oversight|csr committee|quản trị công ty|phát triển bền vững|trách nhiệm xã hội
+G12,G,Compliance management,Does the company disclose legal regulatory compliance systems or incidents?,compliance|legal compliance|regulatory|violation|sanction|tuân thủ|pháp luật|quy định|vi phạm|xử phạt
+G13,G,Transparency and reporting,Does the company disclose reporting standards assurance or transparency commitments?,gri|sasb|issb|tcfd|reporting standard|transparency
+G14,G,Stakeholder engagement,Does the company disclose stakeholder engagement processes and outcomes?,stakeholder engagement|stakeholder dialogue|materiality assessment
+G15,G,Data governance,Does the company disclose information governance cybersecurity governance or IT controls?,data governance|it governance|cyber governance|information security governance

@@ -1,0 +1,71 @@
+topics:
+  environmental_management:
+    name: Environmental Management
+    pillar: E
+    indicators: [E1, E2, E3, E16, E17, E18]
+    query: "environmental policy environmental management biodiversity environmental investment compliance"
+  energy:
+    name: Energy
+    pillar: E
+    indicators: [E4, E5, E6]
+    query: "energy consumption energy intensity renewable energy electricity fuel"
+  climate:
+    name: Climate
+    pillar: E
+    indicators: [E7, E8, E9, E10, E11]
+    query: "greenhouse gas emissions GHG CO2 Scope 1 Scope 2 climate risk emission reduction"
+  water:
+    name: Water
+    pillar: E
+    indicators: [E12, E13]
+    query: "water use water consumption water saving wastewater"
+  waste:
+    name: Waste
+    pillar: E
+    indicators: [E14, E15]
+    query: "waste recycling hazardous waste waste treatment"
+  human_capital:
+    name: Human Capital
+    pillar: S
+    indicators: [S1, S2, S3, S4, S5, S6, S7, S8, S9]
+    query: "employees workforce turnover benefits training development gender equality opportunity"
+  occupational_safety:
+    name: Occupational Safety
+    pillar: S
+    indicators: [S10, S11, S12]
+    query: "occupational health safety accident injury lost work days"
+  human_rights:
+    name: Human Rights
+    pillar: S
+    indicators: [S13, S14]
+    query: "human rights non-discrimination labor rights equal treatment"
+  community:
+    name: Community
+    pillar: S
+    indicators: [S15, S16, S17]
+    query: "community investment CSR stakeholder engagement social contribution"
+  board:
+    name: Board
+    pillar: G
+    indicators: [G1, G2, G3, G4]
+    query: "board of directors independent director board diversity female director"
+  committees:
+    name: Committees
+    pillar: G
+    indicators: [G5, G6, G7]
+    query: "audit committee risk committee ESG committee governance committee"
+  ethics:
+    name: Ethics
+    pillar: G
+    indicators: [G8, G9, G10]
+    query: "business ethics code of conduct anti-corruption whistleblowing"
+  risk_governance:
+    name: Risk Governance
+    pillar: G
+    indicators: [G11, G12, G13]
+    query: "enterprise risk management sustainability risk internal control compliance"
+  shareholder:
+    name: Shareholder
+    pillar: G
+    indicators: [G14, G15]
+    query: "shareholder engagement board remuneration executive compensation"

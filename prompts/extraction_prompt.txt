@@ -1,0 +1,13 @@
+Extract ESG-relevant claims from the report text.
+
+For each claim, return:
+
+- page
+- pillar: E, S, or G
+- topic
+- claim
+- quantitative_value, if any
+- target_or_progress, if any
+
+Return JSON lines only.
+

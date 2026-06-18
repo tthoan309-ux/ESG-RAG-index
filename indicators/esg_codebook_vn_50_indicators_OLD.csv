@@ -1,0 +1,51 @@
+﻿indicator_id,pillar,category_vi,indicator_name_vi,framework,retrieval_query,keywords_vi,score_0,score_1,score_2,score_3,evidence_requirement
+E1,E,Quản trị môi trường,Công bố chính sách môi trường,GRI 2,Doanh nghiệp có công bố chính sách môi trường không?,môi trường;chính sách môi trường,Không đề cập,Đề cập chung,Có chính sách cụ thể,Có chính sách+kết quả/mục tiêu,Đoạn mô tả chính sách
+E2,E,Quản trị môi trường,Hệ thống quản lý môi trường,GRI 3,Có hệ thống quản lý môi trường?,ISO14001;EMS,Không đề cập,Đề cập,Mô tả hệ thống,Mô tả+kết quả,Mô tả hệ thống
+E3,E,Quản trị môi trường,Mục tiêu môi trường,GRI 3,Có mục tiêu môi trường?,mục tiêu môi trường,Không,Có cam kết,Có mục tiêu định lượng,Có mục tiêu+tiến độ,Mục tiêu
+E4,E,Năng lượng,Tiêu thụ năng lượng,GRI302,Công bố tiêu thụ năng lượng?,điện;năng lượng,Không,Định tính,Có số liệu,Có số liệu+xu hướng/mục tiêu,Bảng số liệu
+E5,E,Năng lượng,Cường độ năng lượng,GRI302,Công bố cường độ năng lượng?,energy intensity,Không,Đề cập,Có chỉ số,Có chỉ số+so sánh,Chỉ số
+E6,E,Năng lượng,Năng lượng tái tạo,GRI302,Công bố năng lượng tái tạo?,renewable,Không,Đề cập,Có số liệu,Có số liệu+mục tiêu,Số liệu
+E7,E,Khí hậu,Phát thải khí nhà kính,GRI305,Công bố GHG?,GHG;CO2;carbon,Không,Định tính,Có số liệu,Có số liệu+mục tiêu giảm,Số liệu
+E8,E,Khí hậu,Phát thải Scope 1,IFRS S2,Công bố Scope 1?,scope 1,Không,Đề cập,Có số liệu,Có số liệu+xu hướng,Số liệu
+E9,E,Khí hậu,Phát thải Scope 2,IFRS S2,Công bố Scope 2?,scope 2,Không,Đề cập,Có số liệu,Có số liệu+xu hướng,Số liệu
+E10,E,Khí hậu,Mục tiêu giảm phát thải,TCFD,Có mục tiêu giảm phát thải?,net zero;giảm phát thải,Không,Cam kết,Mục tiêu định lượng,Mục tiêu+tiến độ,Mục tiêu
+E11,E,Khí hậu,Rủi ro khí hậu,TCFD,Có thảo luận rủi ro khí hậu?,biến đổi khí hậu,Không,Đề cập,Phân tích,Phân tích+ứng phó,Mô tả
+E12,E,Tài nguyên,Sử dụng nước,GRI303,Công bố sử dụng nước?,nước,Không,Định tính,Có số liệu,Có số liệu+mục tiêu,Số liệu
+E13,E,Tài nguyên,Tiết kiệm nước,GRI303,Có sáng kiến tiết kiệm nước?,tiết kiệm nước,Không,Đề cập,Có chương trình,Có chương trình+kết quả,Mô tả
+E14,E,Tài nguyên,Lượng chất thải,GRI306,Công bố chất thải?,waste,Không,Định tính,Có số liệu,Có số liệu+xu hướng,Số liệu
+E15,E,Tài nguyên,Tái chế,GRI306,Công bố tái chế?,recycle,Không,Đề cập,Có số liệu,Có số liệu+kết quả,Số liệu
+E16,E,Hiệu quả môi trường,Đầu tư môi trường,GRI201,Đầu tư môi trường?,đầu tư môi trường,Không,Đề cập,Có số tiền,Có số tiền+kết quả,Số liệu
+E17,E,Hiệu quả môi trường,Tuân thủ môi trường,GRI307,Tuân thủ môi trường?,vi phạm môi trường,Không,Đề cập,Có báo cáo,Có báo cáo+thành tích,Mô tả
+E18,E,Hiệu quả môi trường,Đa dạng sinh học,GRI304,Đa dạng sinh học?,biodiversity,Không,Đề cập,Có chương trình,Có chương trình+kết quả,Mô tả
+S1,S,Xã hội,Quy mô lao động,GRI,Công bố Quy mô lao động?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S2,S,Xã hội,Tỷ lệ nghỉ việc,GRI,Công bố Tỷ lệ nghỉ việc?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S3,S,Xã hội,Phúc lợi lao động,GRI,Công bố Phúc lợi lao động?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S4,S,Xã hội,Đào tạo nhân viên,GRI,Công bố Đào tạo nhân viên?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S5,S,Xã hội,Số giờ đào tạo,GRI,Công bố Số giờ đào tạo?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S6,S,Xã hội,Phát triển nghề nghiệp,GRI,Công bố Phát triển nghề nghiệp?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S7,S,Xã hội,Cơ cấu giới tính,GRI,Công bố Cơ cấu giới tính?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S8,S,Xã hội,Tỷ lệ nữ quản lý,GRI,Công bố Tỷ lệ nữ quản lý?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S9,S,Xã hội,Bình đẳng cơ hội,GRI,Công bố Bình đẳng cơ hội?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S10,S,Xã hội,Chính sách an toàn lao động,GRI,Công bố Chính sách an toàn lao động?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S11,S,Xã hội,Tỷ lệ tai nạn lao động,GRI,Công bố Tỷ lệ tai nạn lao động?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S12,S,Xã hội,Ngày mất lao động,GRI,Công bố Ngày mất lao động?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S13,S,Xã hội,Chính sách nhân quyền,GRI,Công bố Chính sách nhân quyền?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S14,S,Xã hội,Chống phân biệt đối xử,GRI,Công bố Chống phân biệt đối xử?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S15,S,Xã hội,Đầu tư cộng đồng,GRI,Công bố Đầu tư cộng đồng?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S16,S,Xã hội,Hoạt động CSR,GRI,Công bố Hoạt động CSR?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+S17,S,Xã hội,Tương tác các bên liên quan,GRI,Công bố Tương tác các bên liên quan?,xã hội,Không,Đề cập,Có số liệu/chương trình,Có số liệu+kết quả,Bằng chứng liên quan
+G1,G,Quản trị,Quy mô HĐQT,GRI/ISSB,Công bố Quy mô HĐQT?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G2,G,Quản trị,Thành viên độc lập,GRI/ISSB,Công bố Thành viên độc lập?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G3,G,Quản trị,Tỷ lệ độc lập HĐQT,GRI/ISSB,Công bố Tỷ lệ độc lập HĐQT?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G4,G,Quản trị,Thành viên nữ HĐQT,GRI/ISSB,Công bố Thành viên nữ HĐQT?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G5,G,Quản trị,Ủy ban kiểm toán,GRI/ISSB,Công bố Ủy ban kiểm toán?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G6,G,Quản trị,Ủy ban quản lý rủi ro,GRI/ISSB,Công bố Ủy ban quản lý rủi ro?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G7,G,Quản trị,Ủy ban ESG,GRI/ISSB,Công bố Ủy ban ESG?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G8,G,Quản trị,Quy tắc đạo đức kinh doanh,GRI/ISSB,Công bố Quy tắc đạo đức kinh doanh?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G9,G,Quản trị,Chính sách chống tham nhũng,GRI/ISSB,Công bố Chính sách chống tham nhũng?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G10,G,Quản trị,Cơ chế tố giác vi phạm,GRI/ISSB,Công bố Cơ chế tố giác vi phạm?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G11,G,Quản trị,Quản trị rủi ro doanh nghiệp,GRI/ISSB,Công bố Quản trị rủi ro doanh nghiệp?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G12,G,Quản trị,Rủi ro bền vững,GRI/ISSB,Công bố Rủi ro bền vững?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G13,G,Quản trị,Kiểm soát nội bộ,GRI/ISSB,Công bố Kiểm soát nội bộ?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G14,G,Quản trị,Tương tác cổ đông,GRI/ISSB,Công bố Tương tác cổ đông?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan
+G15,G,Quản trị,Thù lao HĐQT và điều hành,GRI/ISSB,Công bố Thù lao HĐQT và điều hành?,quản trị,Không,Đề cập,Có mô tả,Có mô tả+kết quả/số liệu,Bằng chứng liên quan

@@ -1,0 +1,26 @@
+You are an ESG analyst.
+
+Evaluate the ESG disclosure quality for one firm-year and one indicator.
+
+Question:
+{question}
+
+Evidence:
+{evidence}
+
+Score using this rubric:
+
+0 = No relevant disclosure
+1 = General qualitative disclosure
+2 = Quantitative disclosure
+3 = Quantitative disclosure with targets, progress, or time-bound commitments
+
+Return JSON only:
+{
+  "indicator_id": "...",
+  "score": 0,
+  "confidence": 0.0,
+  "evidence": "...",
+  "rationale": "..."
+}
+
