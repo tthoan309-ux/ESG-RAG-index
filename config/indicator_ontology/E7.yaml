@@ -1,0 +1,149 @@
+indicator_id: E7
+name: GHG Emissions
+name_vi: Tổng phát thải KNK
+pillar: E
+domain: Climate
+subdomain: Emissions
+frameworks:
+- GRI 305-1
+- GRI 305-2
+- ISSB S2
+disclosure_type: quantitative
+formal_definition: Tổng phát thải khí nhà kính
+objective: disclose GHG Emissions
+required_entities:
+- greenhouse gas
+- GHG
+- CO2e
+- carbon emission
+positive_keywords:
+- greenhouse gas
+- GHG
+- CO2e
+- carbon emission
+- carbon footprint
+- Tổng phát thải KNK
+- GHG Emissions
+- Tổng phát thải khí nhà kính
+- GHG emissions; tCO2e
+- phát thải khí nhà kính
+- GHG emissions
+negative_keywords:
+- fuel consumption only
+- doanh thu
+alternative_phrases:
+- total emissions
+- emissions inventory
+- carbon inventory
+- GHG emissions; tCO2e
+- GHG emissions
+units:
+- tCO2e
+- ton CO2e
+- tons CO2e
+- metric tons CO2e
+score_patterns:
+  qualitative:
+  - greenhouse gas
+  - GHG
+  - CO2e
+  quantitative:
+  - tCO2e
+  - ton CO2e
+  - tons CO2e
+  - metric tons CO2e
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - greenhouse gas
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- greenhouse gas
+- GHG
+- CO2e
+- carbon emission
+- tCO2e
+- ton CO2e
+- tons CO2e
+- metric tons CO2e
+false_positive_patterns:
+- fuel consumption only
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - greenhouse gas
+  - GHG
+  - CO2e
+  should_contain_any:
+  - tCO2e
+  - ton CO2e
+  - tons CO2e
+  - metric tons CO2e
+  - total emissions
+  - emissions inventory
+  - carbon inventory
+  - GHG emissions; tCO2e
+  reject_if_only:
+  - fuel consumption only
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- greenhouse gas
+- GHG
+- CO2e
+- carbon emission
+soft_positive:
+- greenhouse gas
+- GHG
+- CO2e
+- carbon emission
+- carbon footprint
+- Tổng phát thải KNK
+- GHG Emissions
+- Tổng phát thải khí nhà kính
+- GHG emissions; tCO2e
+- phát thải khí nhà kính
+- total emissions
+- emissions inventory
+- carbon inventory
+qualitative_patterns:
+- greenhouse gas
+- GHG
+- CO2e
+- carbon emission
+- carbon footprint
+- Tổng phát thải KNK
+- GHG Emissions
+- Tổng phát thải khí nhà kính
+- total emissions
+- emissions inventory
+- carbon inventory
+- GHG emissions; tCO2e
+- management
+- program
+- initiative
+- practice
+- disclosure
+quantitative_patterns:
+- tCO2e
+- ton CO2e
+- tons CO2e
+- metric tons CO2e

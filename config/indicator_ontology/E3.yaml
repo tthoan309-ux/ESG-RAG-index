@@ -1,0 +1,147 @@
+indicator_id: E3
+name: ISO14001
+name_vi: Chứng nhận ISO 14001
+pillar: E
+domain: Climate
+subdomain: Certification
+frameworks:
+- ISO 14001
+- GRI 2
+disclosure_type: certification
+formal_definition: Công bố chứng nhận ISO14001
+objective: disclose ISO14001
+required_entities:
+- ISO 14001
+- ISO14001
+- certified ISO 14001
+- environmental certification
+positive_keywords:
+- ISO 14001
+- ISO14001
+- certified ISO 14001
+- environmental certification
+- Chứng nhận ISO 14001
+- Công bố chứng nhận ISO14001
+- ISO14001 certification
+negative_keywords:
+- ISO 9001
+- ISO 45001
+- ISO 22000
+- doanh thu
+alternative_phrases:
+- ISO 14001:2015
+- certification
+- ISO14001 certification
+- ISO14001
+units: []
+score_patterns:
+  qualitative:
+  - ISO 14001
+  - ISO14001
+  - certified ISO 14001
+  - environmental certification
+  quantitative:
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - ISO 14001
+  - ISO14001
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- ISO 14001
+- ISO14001
+- certified ISO 14001
+- environmental certification
+false_positive_patterns:
+- ISO 9001
+- ISO 45001
+- ISO 22000
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - ISO 14001
+  - ISO14001
+  - certified ISO 14001
+  - environmental certification
+  should_contain_any:
+  - ISO 14001:2015
+  - certification
+  - ISO14001 certification
+  - ISO14001
+  reject_if_only:
+  - ISO 9001
+  - ISO 45001
+  - ISO 22000
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- ISO 14001
+- ISO14001
+- certified ISO 14001
+- environmental certification
+soft_positive:
+- ISO 14001
+- ISO14001
+- certified ISO 14001
+- environmental certification
+- Chứng nhận ISO 14001
+- Công bố chứng nhận ISO14001
+- ISO14001 certification
+- ISO 14001:2015
+- certification
+qualitative_patterns:
+- ISO 14001
+- ISO14001
+- certified ISO 14001
+- environmental certification
+- Chứng nhận ISO 14001
+- Công bố chứng nhận ISO14001
+- ISO14001 certification
+- ISO 14001:2015
+- certification
+- policy
+- commitment
+- management
+- program
+- procedure
+- governance
+- committee
+- oversight
+- strategy
+- training
+- risk management
+- code of conduct
+- system
+- mechanism
+- initiative
+- practice
+- chinh sach
+- cam ket
+- quan ly
+- chuong trinh
+- quy trinh
+- uy ban
+- giam sat
+- dao tao
+- he thong
+quantitative_patterns:
+- ISO 14001
+- ISO14001

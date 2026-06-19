@@ -1,0 +1,121 @@
+indicator_id: E20
+name: Environmental Investment
+name_vi: Đầu tư môi trường
+pillar: E
+domain: Environmental Investment
+subdomain: Expenditure
+frameworks:
+- GRI 201
+- GRI 2
+disclosure_type: investment
+formal_definition: Chi phí/đầu tư môi trường
+objective: disclose Environmental Investment
+required_entities:
+- environmental investment
+- environmental expenditure
+- capital expenditure environment
+positive_keywords:
+- environmental investment
+- environmental expenditure
+- capital expenditure environment
+- Đầu tư môi trường
+- Environmental Investment
+- Chi phí/đầu tư môi trường
+- đầu tư môi trường
+negative_keywords:
+- doanh thu
+alternative_phrases:
+- environmental protection cost
+- green investment
+- environmental capex
+- environmental investment
+units:
+- VND
+- million VND
+- USD
+score_patterns:
+  qualitative:
+  - environmental investment
+  - environmental expenditure
+  - capital expenditure environment
+  quantitative:
+  - VND
+  - million VND
+  - USD
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - environmental investment
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- environmental investment
+- environmental expenditure
+- capital expenditure environment
+- VND
+- million VND
+false_positive_patterns:
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - environmental investment
+  - environmental expenditure
+  - capital expenditure environment
+  should_contain_any:
+  - VND
+  - million VND
+  - environmental protection cost
+  - green investment
+  - environmental capex
+  - environmental investment
+  reject_if_only:
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- environmental investment
+- environmental expenditure
+- capital expenditure environment
+soft_positive:
+- environmental investment
+- environmental expenditure
+- capital expenditure environment
+- Đầu tư môi trường
+- Chi phí/đầu tư môi trường
+- environmental protection cost
+- green investment
+- environmental capex
+qualitative_patterns:
+- environmental investment
+- environmental expenditure
+- capital expenditure environment
+- Đầu tư môi trường
+- Chi phí/đầu tư môi trường
+- environmental protection cost
+- green investment
+- environmental capex
+- management
+- program
+- initiative
+- practice
+- disclosure
+quantitative_patterns:
+- VND
+- million VND
+- USD

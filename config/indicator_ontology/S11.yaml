@@ -1,0 +1,138 @@
+indicator_id: S11
+name: Employee Benefits
+name_vi: Phúc lợi nhân viên
+pillar: S
+domain: Employee Relations
+subdomain: Benefits
+frameworks:
+- GRI 401-2
+disclosure_type: policy
+formal_definition: Phúc lợi ngoài lương
+objective: disclose Employee Benefits
+required_entities:
+- employee benefits
+- benefits
+- welfare
+positive_keywords:
+- employee benefits
+- benefits
+- welfare
+- Phúc lợi nhân viên
+- Employee Benefits
+- Phúc lợi ngoài lương
+- phúc lợi
+negative_keywords:
+- doanh thu
+alternative_phrases:
+- staff welfare
+- employee welfare
+- social insurance
+- employee benefits
+- benefits
+units:
+- VND
+- '%'
+score_patterns:
+  qualitative:
+  - employee benefits
+  - benefits
+  quantitative:
+  - VND
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - employee benefits
+  - benefits
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- employee benefits
+- benefits
+- welfare
+- VND
+- '%'
+false_positive_patterns:
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - employee benefits
+  - benefits
+  should_contain_any:
+  - VND
+  - '%'
+  - staff welfare
+  - employee welfare
+  - social insurance
+  - employee benefits
+  - benefits
+  reject_if_only:
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- employee benefits
+- benefits
+- welfare
+soft_positive:
+- employee benefits
+- benefits
+- welfare
+- Phúc lợi nhân viên
+- Phúc lợi ngoài lương
+- phúc lợi
+- staff welfare
+- employee welfare
+- social insurance
+qualitative_patterns:
+- employee benefits
+- benefits
+- welfare
+- Phúc lợi nhân viên
+- Phúc lợi ngoài lương
+- phúc lợi
+- staff welfare
+- employee welfare
+- social insurance
+- policy
+- commitment
+- management
+- program
+- procedure
+- governance
+- committee
+- oversight
+- strategy
+- training
+- risk management
+- code of conduct
+- system
+- mechanism
+- initiative
+- practice
+- chinh sach
+- cam ket
+- quan ly
+- chuong trinh
+- quy trinh
+- uy ban
+- giam sat
+- dao tao
+- he thong
+quantitative_patterns:
+- VND

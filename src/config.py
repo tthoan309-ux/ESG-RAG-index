@@ -16,11 +16,23 @@ class PipelinePaths:
     embeddings: Path = ROOT / "data" / "embeddings"
     ocr_cache: Path = ROOT / "data" / "ocr_cache"
     indicators: Path = ROOT / "indicators"
+    indicator_ontology: Path = ROOT / "config" / "indicator_ontology"
+    financial_indicators: Path = ROOT / "config" / "financial_indicators.yaml"
     vectorstore: Path = ROOT / "vectorstore" / "faiss"
     indicator_scores: Path = ROOT / "outputs" / "indicator_scores"
     esg_scores: Path = ROOT / "outputs" / "ESG_scores"
     evidence: Path = ROOT / "outputs" / "evidence"
     evidence_dataset: Path = ROOT / "outputs" / "evidence_dataset.csv"
+    financial_dataset_csv: Path = ROOT / "outputs" / "financial_dataset.csv"
+    financial_dataset_parquet: Path = ROOT / "outputs" / "financial_dataset.parquet"
+    financial_runtime: Path = ROOT / "outputs" / "financial_runtime.csv"
+    financial_quality: Path = ROOT / "outputs" / "financial_quality.csv"
+    financial_pages: Path = ROOT / "outputs" / "pipeline_artifacts" / "financial_pages.parquet"
+    financial_page_quality: Path = ROOT / "outputs" / "pipeline_artifacts" / "financial_page_quality.csv"
+    financial_chunks: Path = ROOT / "data" / "financial_chunks.parquet"
+    financial_embeddings: Path = ROOT / "data" / "financial_embeddings.npy"
+    financial_warehouse: Path = ROOT / "outputs" / "pipeline_artifacts" / "financial_warehouse"
+    financial_cache: Path = ROOT / "outputs" / "pipeline_artifacts" / "financial_cache"
     chatgpt_batches: Path = ROOT / "outputs" / "chatgpt_batches"
     chatgpt_batches_json: Path = ROOT / "outputs" / "chatgpt_batches_json"
     chatgpt_prompt_package: Path = ROOT / "outputs" / "chatgpt_prompt_package"
@@ -52,10 +64,13 @@ class PipelinePaths:
             self.embeddings,
             self.ocr_cache,
             self.indicators,
+            self.indicator_ontology,
             self.vectorstore,
             self.indicator_scores,
             self.esg_scores,
             self.evidence,
+            self.financial_warehouse,
+            self.financial_cache,
             self.chatgpt_batches,
             self.chatgpt_batches_json,
             self.chatgpt_prompt_package,

@@ -1,0 +1,128 @@
+indicator_id: E8
+name: Scope 1
+name_vi: Phát thải Scope 1
+pillar: E
+domain: Climate
+subdomain: Scope 1
+frameworks:
+- GRI 305-1
+- ISSB S2
+disclosure_type: quantitative
+formal_definition: Phát thải trực tiếp
+objective: disclose Scope 1
+required_entities:
+- scope 1
+- direct emissions
+- direct GHG
+- scope one
+positive_keywords:
+- scope 1
+- direct emissions
+- direct GHG
+- scope one
+- Phát thải Scope 1
+- Scope 1
+- Phát thải trực tiếp
+- scope 1 emissions
+negative_keywords:
+- scope 2
+- doanh thu
+alternative_phrases:
+- Scope I
+- stationary combustion
+- scope 1 emissions
+- scope 1
+units:
+- tCO2e
+- ton CO2e
+score_patterns:
+  qualitative:
+  - scope 1
+  - direct emissions
+  - direct GHG
+  quantitative:
+  - tCO2e
+  - ton CO2e
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - scope 1
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- scope 1
+- direct emissions
+- direct GHG
+- scope one
+- tCO2e
+- ton CO2e
+false_positive_patterns:
+- scope 2
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - scope 1
+  - direct emissions
+  - direct GHG
+  should_contain_any:
+  - tCO2e
+  - ton CO2e
+  - Scope I
+  - stationary combustion
+  - scope 1 emissions
+  - scope 1
+  reject_if_only:
+  - scope 2
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- scope 1
+- direct emissions
+- direct GHG
+- scope one
+soft_positive:
+- scope 1
+- direct emissions
+- direct GHG
+- scope one
+- Phát thải Scope 1
+- Phát thải trực tiếp
+- scope 1 emissions
+- Scope I
+- stationary combustion
+qualitative_patterns:
+- scope 1
+- direct emissions
+- direct GHG
+- scope one
+- Phát thải Scope 1
+- Phát thải trực tiếp
+- scope 1 emissions
+- Scope I
+- stationary combustion
+- management
+- program
+- initiative
+- practice
+- disclosure
+quantitative_patterns:
+- tCO2e
+- ton CO2e
+- scope 1

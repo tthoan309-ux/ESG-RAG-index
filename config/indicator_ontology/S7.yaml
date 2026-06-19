@@ -1,0 +1,119 @@
+indicator_id: S7
+name: LTIFR
+name_vi: Tần suất tai nạn lao động
+pillar: S
+domain: OHS
+subdomain: LTIFR
+frameworks:
+- GRI 403-9
+disclosure_type: quantitative
+formal_definition: Tỷ lệ tai nạn lao động mất ngày công
+objective: disclose LTIFR
+required_entities:
+- LTIFR
+- lost time injury frequency rate
+- lost workday
+- Tần suất tai nạn lao động
+positive_keywords:
+- LTIFR
+- lost time injury frequency rate
+- lost workday
+- Tần suất tai nạn lao động
+- Tỷ lệ tai nạn lao động mất ngày công
+- tai nạn lao động
+negative_keywords:
+- doanh thu
+alternative_phrases:
+- lost time injury
+- LTI frequency
+- frequency rate
+- LTIFR
+units:
+- LTIFR
+- /million hours
+score_patterns:
+  qualitative:
+  - LTIFR
+  - lost time injury frequency rate
+  - lost workday
+  quantitative:
+  - LTIFR
+  - /million hours
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - lost time injury frequency rate
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- LTIFR
+- lost time injury frequency rate
+- lost workday
+- Tần suất tai nạn lao động
+- /million hours
+false_positive_patterns:
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - LTIFR
+  - lost time injury frequency rate
+  - lost workday
+  should_contain_any:
+  - LTIFR
+  - /million hours
+  - lost time injury
+  - LTI frequency
+  - frequency rate
+  reject_if_only:
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- LTIFR
+- lost time injury frequency rate
+- lost workday
+- Tần suất tai nạn lao động
+soft_positive:
+- LTIFR
+- lost time injury frequency rate
+- lost workday
+- Tần suất tai nạn lao động
+- Tỷ lệ tai nạn lao động mất ngày công
+- tai nạn lao động
+- lost time injury
+- LTI frequency
+- frequency rate
+qualitative_patterns:
+- LTIFR
+- lost time injury frequency rate
+- lost workday
+- Tần suất tai nạn lao động
+- Tỷ lệ tai nạn lao động mất ngày công
+- tai nạn lao động
+- lost time injury
+- LTI frequency
+- frequency rate
+- management
+- program
+- initiative
+- practice
+- disclosure
+quantitative_patterns:
+- LTIFR
+- /million hours

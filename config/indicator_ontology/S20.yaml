@@ -1,0 +1,129 @@
+indicator_id: S20
+name: Supply Chain Risk
+name_vi: Rủi ro chuỗi cung ứng
+pillar: S
+domain: Supply Chain
+subdomain: Supply Chain Risk
+frameworks:
+- GRI 2
+- GRI 414
+disclosure_type: governance
+formal_definition: Quản lý rủi ro chuỗi cung ứng
+objective: disclose Supply Chain Risk
+required_entities:
+- supply chain risk
+- supply chain management
+- procurement risk
+positive_keywords:
+- supply chain risk
+- supply chain management
+- procurement risk
+- Rủi ro chuỗi cung ứng
+- Supply Chain Risk
+- Quản lý rủi ro chuỗi cung ứng
+- chuỗi cung ứng
+negative_keywords:
+- doanh thu
+alternative_phrases:
+- supply chain resilience
+- supplier risk
+- responsible supply chain
+- supply chain risk
+units: []
+score_patterns:
+  qualitative:
+  - supply chain risk
+  - supply chain management
+  quantitative:
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - supply chain risk
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- supply chain risk
+- supply chain management
+- procurement risk
+false_positive_patterns:
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - supply chain risk
+  - supply chain management
+  should_contain_any:
+  - supply chain resilience
+  - supplier risk
+  - responsible supply chain
+  - supply chain risk
+  reject_if_only:
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- supply chain risk
+- supply chain management
+- procurement risk
+soft_positive:
+- supply chain risk
+- supply chain management
+- procurement risk
+- Rủi ro chuỗi cung ứng
+- Quản lý rủi ro chuỗi cung ứng
+- chuỗi cung ứng
+- supply chain resilience
+- supplier risk
+- responsible supply chain
+qualitative_patterns:
+- supply chain risk
+- supply chain management
+- procurement risk
+- Rủi ro chuỗi cung ứng
+- Quản lý rủi ro chuỗi cung ứng
+- chuỗi cung ứng
+- supply chain resilience
+- supplier risk
+- responsible supply chain
+- policy
+- commitment
+- management
+- program
+- procedure
+- governance
+- committee
+- oversight
+- strategy
+- training
+- risk management
+- code of conduct
+- system
+- mechanism
+- initiative
+- practice
+- chinh sach
+- cam ket
+- quan ly
+- chuong trinh
+- quy trinh
+- uy ban
+- giam sat
+- dao tao
+- he thong
+quantitative_patterns:
+- supply chain risk

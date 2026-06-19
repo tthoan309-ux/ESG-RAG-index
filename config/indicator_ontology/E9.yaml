@@ -1,0 +1,131 @@
+indicator_id: E9
+name: Scope 2
+name_vi: Phát thải Scope 2
+pillar: E
+domain: Climate
+subdomain: Scope 2
+frameworks:
+- GRI 305-2
+- ISSB S2
+disclosure_type: quantitative
+formal_definition: Phát thải gián tiếp từ điện
+objective: disclose Scope 2
+required_entities:
+- scope 2
+- indirect emissions
+- purchased electricity emissions
+- scope two
+positive_keywords:
+- scope 2
+- indirect emissions
+- purchased electricity emissions
+- scope two
+- Phát thải Scope 2
+- Scope 2
+- Phát thải gián tiếp từ điện
+- scope 2 emissions
+negative_keywords:
+- scope 1
+- doanh thu
+alternative_phrases:
+- Scope II
+- location-based
+- market-based
+- scope 2 emissions
+- scope 2
+units:
+- tCO2e
+- ton CO2e
+score_patterns:
+  qualitative:
+  - scope 2
+  - indirect emissions
+  - purchased electricity emissions
+  quantitative:
+  - tCO2e
+  - ton CO2e
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - scope 2
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- scope 2
+- indirect emissions
+- purchased electricity emissions
+- scope two
+- tCO2e
+- ton CO2e
+false_positive_patterns:
+- scope 1
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - scope 2
+  - indirect emissions
+  - purchased electricity emissions
+  should_contain_any:
+  - tCO2e
+  - ton CO2e
+  - Scope II
+  - location-based
+  - market-based
+  - scope 2 emissions
+  reject_if_only:
+  - scope 1
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- scope 2
+- indirect emissions
+- purchased electricity emissions
+- scope two
+soft_positive:
+- scope 2
+- indirect emissions
+- purchased electricity emissions
+- scope two
+- Phát thải Scope 2
+- Phát thải gián tiếp từ điện
+- scope 2 emissions
+- Scope II
+- location-based
+- market-based
+qualitative_patterns:
+- scope 2
+- indirect emissions
+- purchased electricity emissions
+- scope two
+- Phát thải Scope 2
+- Phát thải gián tiếp từ điện
+- scope 2 emissions
+- Scope II
+- location-based
+- market-based
+- management
+- program
+- initiative
+- practice
+- disclosure
+quantitative_patterns:
+- tCO2e
+- ton CO2e
+- scope 2

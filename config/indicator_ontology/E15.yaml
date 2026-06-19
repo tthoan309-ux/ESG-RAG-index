@@ -1,0 +1,121 @@
+indicator_id: E15
+name: Water Recycling
+name_vi: Tái sử dụng nước
+pillar: E
+domain: Water
+subdomain: Reuse
+frameworks:
+- GRI 303-4
+- GRI 303-5
+disclosure_type: quantitative
+formal_definition: Hoạt động tái chế/tái sử dụng nước
+objective: disclose Water Recycling
+required_entities:
+- water reuse
+- water recycling
+- recycled water
+- reuse water
+positive_keywords:
+- water reuse
+- water recycling
+- recycled water
+- reuse water
+- Tái sử dụng nước
+- Water Recycling
+- Hoạt động tái chế/tái sử dụng nước
+- tái sử dụng nước
+negative_keywords:
+- renewable energy
+- doanh thu
+alternative_phrases:
+- water recirculation
+- water recycling
+units:
+- m3
+- '%'
+- ML
+score_patterns:
+  qualitative:
+  - water reuse
+  - water recycling
+  - recycled water
+  quantitative:
+  - m3
+  - '%'
+  - ML
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - water reuse
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- water reuse
+- water recycling
+- recycled water
+- reuse water
+- m3
+- '%'
+- ML
+false_positive_patterns:
+- renewable energy
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - water reuse
+  - water recycling
+  - recycled water
+  should_contain_any:
+  - m3
+  - '%'
+  - ML
+  - water recirculation
+  - water recycling
+  reject_if_only:
+  - renewable energy
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- water reuse
+- water recycling
+- recycled water
+- reuse water
+soft_positive:
+- water reuse
+- water recycling
+- recycled water
+- reuse water
+- Tái sử dụng nước
+- Hoạt động tái chế/tái sử dụng nước
+- water recirculation
+qualitative_patterns:
+- water reuse
+- water recycling
+- recycled water
+- reuse water
+- Tái sử dụng nước
+- Hoạt động tái chế/tái sử dụng nước
+- water recirculation
+- management
+- program
+- initiative
+- practice
+- disclosure
+quantitative_patterns:
+- m3

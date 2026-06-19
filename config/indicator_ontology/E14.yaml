@@ -1,0 +1,104 @@
+indicator_id: E14
+name: Water Intensity
+name_vi: Cường độ nước
+pillar: E
+domain: Water
+subdomain: Intensity
+frameworks:
+- GRI 303
+disclosure_type: quantitative
+formal_definition: Mức sử dụng nước trên đơn vị hoạt động
+objective: disclose Water Intensity
+required_entities:
+- water intensity
+- water per unit
+- water per revenue
+positive_keywords:
+- water intensity
+- water per unit
+- water per revenue
+- Cường độ nước
+- Water Intensity
+- Mức sử dụng nước trên đơn vị hoạt động
+- cường độ nước
+negative_keywords:
+- doanh thu
+alternative_phrases:
+- water intensity
+units:
+- m3/unit
+- m3/doanh thu
+score_patterns:
+  qualitative:
+  - water intensity
+  - water per unit
+  quantitative:
+  - m3/unit
+  - m3/doanh thu
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - water intensity
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- water intensity
+- water per unit
+- water per revenue
+- m3/unit
+- m3/doanh thu
+false_positive_patterns:
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - water intensity
+  - water per unit
+  should_contain_any:
+  - m3/unit
+  - m3/doanh thu
+  - water intensity
+  reject_if_only:
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- water intensity
+- water per unit
+- water per revenue
+soft_positive:
+- water intensity
+- water per unit
+- water per revenue
+- Cường độ nước
+- Mức sử dụng nước trên đơn vị hoạt động
+qualitative_patterns:
+- water intensity
+- water per unit
+- water per revenue
+- Cường độ nước
+- Mức sử dụng nước trên đơn vị hoạt động
+- management
+- program
+- initiative
+- practice
+- disclosure
+quantitative_patterns:
+- m3/unit
+- m3/doanh thu
+- water intensity

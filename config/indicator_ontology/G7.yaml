@@ -1,0 +1,144 @@
+indicator_id: G7
+name: ESG Committee
+name_vi: Ủy ban ESG
+pillar: G
+domain: Committees
+subdomain: ESG Committee
+frameworks:
+- GRI 2-12
+- ISSB S1
+disclosure_type: governance
+formal_definition: Ủy ban phát triển bền vững/ESG
+objective: disclose ESG Committee
+required_entities:
+- ESG committee
+- sustainability committee
+- ban ESG
+- governance of sustainability
+positive_keywords:
+- ESG committee
+- sustainability committee
+- ban ESG
+- governance of sustainability
+- Ủy ban ESG
+- ESG Committee
+- Ủy ban phát triển bền vững/ESG
+- ủy ban ESG
+negative_keywords:
+- ESG score external only
+- doanh thu
+alternative_phrases:
+- sustainable development committee
+- CSR committee
+- ESG committee
+- sustainability committee
+units:
+- members
+- meetings
+score_patterns:
+  qualitative:
+  - ESG committee
+  - sustainability committee
+  - ban ESG
+  quantitative:
+  - members
+  - meetings
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - ESG committee
+  - sustainability committee
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- ESG committee
+- sustainability committee
+- ban ESG
+- governance of sustainability
+- members
+- meetings
+false_positive_patterns:
+- ESG score external only
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - ESG committee
+  - sustainability committee
+  - ban ESG
+  should_contain_any:
+  - members
+  - meetings
+  - sustainable development committee
+  - CSR committee
+  - ESG committee
+  - sustainability committee
+  reject_if_only:
+  - ESG score external only
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- ESG committee
+- sustainability committee
+- ban ESG
+- governance of sustainability
+soft_positive:
+- ESG committee
+- sustainability committee
+- ban ESG
+- governance of sustainability
+- Ủy ban ESG
+- Ủy ban phát triển bền vững/ESG
+- sustainable development committee
+- CSR committee
+qualitative_patterns:
+- ESG committee
+- sustainability committee
+- ban ESG
+- governance of sustainability
+- Ủy ban ESG
+- Ủy ban phát triển bền vững/ESG
+- sustainable development committee
+- CSR committee
+- policy
+- commitment
+- management
+- program
+- procedure
+- governance
+- committee
+- oversight
+- strategy
+- training
+- risk management
+- code of conduct
+- system
+- mechanism
+- initiative
+- practice
+- chinh sach
+- cam ket
+- quan ly
+- chuong trinh
+- quy trinh
+- uy ban
+- giam sat
+- dao tao
+- he thong
+quantitative_patterns: []

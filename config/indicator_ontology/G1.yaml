@@ -1,0 +1,115 @@
+indicator_id: G1
+name: Board Size
+name_vi: Quy mô HĐQT
+pillar: G
+domain: Board
+subdomain: Board Size
+frameworks:
+- GRI 2-9
+disclosure_type: quantitative
+formal_definition: Số lượng thành viên HĐQT
+objective: disclose Board Size
+required_entities:
+- board size
+- board members
+- members of board
+positive_keywords:
+- board size
+- board members
+- members of board
+- Quy mô HĐQT
+- Board Size
+- Số lượng thành viên HĐQT
+- HĐQT
+negative_keywords:
+- doanh thu
+alternative_phrases:
+- number of directors
+- board composition
+- board size
+- board members
+units:
+- members
+- directors
+score_patterns:
+  qualitative:
+  - board size
+  - board members
+  - members of board
+  quantitative:
+  - members
+  - directors
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - board size
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- board size
+- board members
+- members of board
+- members
+- directors
+false_positive_patterns:
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - board size
+  - board members
+  - members of board
+  should_contain_any:
+  - members
+  - directors
+  - number of directors
+  - board composition
+  - board size
+  - board members
+  reject_if_only:
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- board size
+- board members
+- members of board
+soft_positive:
+- board size
+- board members
+- members of board
+- Quy mô HĐQT
+- Số lượng thành viên HĐQT
+- HĐQT
+- number of directors
+- board composition
+qualitative_patterns:
+- board size
+- board members
+- members of board
+- Quy mô HĐQT
+- Số lượng thành viên HĐQT
+- HĐQT
+- number of directors
+- board composition
+- management
+- program
+- initiative
+- practice
+- disclosure
+quantitative_patterns: []

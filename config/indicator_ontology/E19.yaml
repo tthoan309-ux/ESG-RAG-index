@@ -1,0 +1,141 @@
+indicator_id: E19
+name: Biodiversity
+name_vi: Đa dạng sinh học
+pillar: E
+domain: Biodiversity
+subdomain: Impact
+frameworks:
+- GRI 304
+disclosure_type: policy
+formal_definition: Tác động hoặc bảo tồn đa dạng sinh học
+objective: disclose Biodiversity
+required_entities:
+- biodiversity
+- ecosystem
+- conservation
+positive_keywords:
+- biodiversity
+- ecosystem
+- conservation
+- habitat
+- Đa dạng sinh học
+- Biodiversity
+- Tác động hoặc bảo tồn đa dạng sinh học
+- đa dạng sinh học
+negative_keywords:
+- doanh thu
+alternative_phrases:
+- biodiversity impact
+- ecosystem protection
+- species conservation
+- biodiversity
+units:
+- ha
+- hectare
+- species
+score_patterns:
+  qualitative:
+  - biodiversity
+  - ecosystem
+  quantitative:
+  - ha
+  - hectare
+  - species
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - biodiversity
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- biodiversity
+- ecosystem
+- conservation
+- ha
+- hectare
+- species
+false_positive_patterns:
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - biodiversity
+  - ecosystem
+  should_contain_any:
+  - ha
+  - hectare
+  - species
+  - biodiversity impact
+  - ecosystem protection
+  - species conservation
+  - biodiversity
+  reject_if_only:
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- biodiversity
+- ecosystem
+- conservation
+soft_positive:
+- biodiversity
+- ecosystem
+- conservation
+- habitat
+- Đa dạng sinh học
+- Tác động hoặc bảo tồn đa dạng sinh học
+- biodiversity impact
+- ecosystem protection
+- species conservation
+qualitative_patterns:
+- biodiversity
+- ecosystem
+- conservation
+- habitat
+- Đa dạng sinh học
+- Tác động hoặc bảo tồn đa dạng sinh học
+- biodiversity impact
+- ecosystem protection
+- species conservation
+- policy
+- commitment
+- management
+- program
+- procedure
+- governance
+- committee
+- oversight
+- strategy
+- training
+- risk management
+- code of conduct
+- system
+- mechanism
+- initiative
+- practice
+- chinh sach
+- cam ket
+- quan ly
+- chuong trinh
+- quy trinh
+- uy ban
+- giam sat
+- dao tao
+- he thong
+quantitative_patterns:
+- ha

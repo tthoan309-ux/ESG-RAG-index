@@ -1,0 +1,122 @@
+indicator_id: E1
+name: Climate Policy
+name_vi: Chính sách khí hậu và môi trường
+pillar: E
+domain: Climate
+subdomain: Policy
+frameworks:
+- GRI 2
+- TCFD Governance
+- ISSB S2
+disclosure_type: policy
+formal_definition: Công bố chính sách hoặc cam kết về khí hậu/môi trường
+objective: disclose Climate Policy
+required_entities: []
+positive_keywords:
+- environmental policy
+- climate policy
+- net zero policy
+- sustainability policy
+- environmental commitment
+- climate commitment
+- Chính sách khí hậu và môi trường
+- Climate Policy
+- Công bố chính sách hoặc cam kết về khí hậu/môi trường
+- climate policy; environmental policy; net zero policy
+- chính sách môi trường; chính sách khí hậu
+negative_keywords:
+- doanh thu
+alternative_phrases:
+- environmental strategy
+- climate strategy
+- climate policy; environmental policy; net zero policy
+- environmental policy
+units: []
+score_patterns:
+  qualitative: []
+  quantitative:
+  - '%'
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns: []
+false_positive_patterns:
+- doanh thu
+validation_rules:
+  must_contain_any: []
+  should_contain_any:
+  - environmental strategy
+  - climate strategy
+  reject_if_only:
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required: []
+soft_positive:
+- environmental policy
+- climate policy
+- net zero policy
+- sustainability policy
+- environmental commitment
+- climate commitment
+- Chính sách khí hậu và môi trường
+- Công bố chính sách hoặc cam kết về khí hậu/môi trường
+- climate policy; environmental policy; net zero policy
+- chính sách môi trường; chính sách khí hậu
+- environmental strategy
+- climate strategy
+qualitative_patterns:
+- environmental policy
+- climate policy
+- net zero policy
+- sustainability policy
+- environmental commitment
+- climate commitment
+- Chính sách khí hậu và môi trường
+- Công bố chính sách hoặc cam kết về khí hậu/môi trường
+- environmental strategy
+- climate strategy
+- climate policy; environmental policy; net zero policy
+- policy
+- commitment
+- management
+- program
+- procedure
+- governance
+- committee
+- oversight
+- strategy
+- training
+- risk management
+- code of conduct
+- system
+- mechanism
+- initiative
+- practice
+- chinh sach
+- cam ket
+- quan ly
+- chuong trinh
+- quy trinh
+- uy ban
+- giam sat
+- dao tao
+- he thong
+quantitative_patterns: []

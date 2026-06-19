@@ -19,6 +19,8 @@ from .embedding_manager import EmbeddingManager
 from .error_manager import ErrorRecorder
 from .export_evidence import load_codebook
 from .experiment_tracker import write_experiment
+from .financial_pages import FinancialPageParser
+from .financial_retriever import FinancialRetriever
 from .logging_config import configure_logging
 from .manifest_manager import ManifestManager
 from .ocr_manager import default_ocr_workers
@@ -54,6 +56,11 @@ def run_pipeline(
     retrieval_mode: str = "hybrid-rerank",
     rerank_threshold: float = 0.95,
     warehouse_top_k: int = 80,
+    financial: bool = False,
+    rebuild_financial: bool = False,
+    rebuild_financial_pages: bool = False,
+    financial_top_k: int = 8,
+    financial_warehouse_top_k: int = 40,
 ) -> pd.DataFrame:
     total_start = perf_counter()
     paths = PipelinePaths(raw_reports=input_dir or PipelinePaths().raw_reports)
@@ -122,6 +129,20 @@ def run_pipeline(
     )
     retrieval_seconds = perf_counter() - retrieval_start
 
+    financial_result = None
+    financial_seconds = 0.0
+    if financial:
+        financial_start = perf_counter()
+        financial_config = RetrievalConfig(top_k=financial_top_k, warehouse_top_k=financial_warehouse_top_k)
+        financial_corpus = FinancialPageParser(paths=paths, embedder=embedding_manager.embedder).build(rebuild=rebuild_financial_pages)
+        financial_result = FinancialRetriever(
+            store=financial_corpus.store,
+            manifest=manifest_manager,
+            config=financial_config,
+            rebuild=rebuild_financial,
+        ).export_financials(firm_years=firm_years(corpus_result.chunks))
+        financial_seconds = perf_counter() - financial_start
+
     batch_manifest = build_chatgpt_batches(
         evidence_dataset_path=paths.evidence_dataset,
         output_dir=paths.chatgpt_batches,
@@ -151,6 +172,8 @@ def run_pipeline(
         ),
     )
     duckdb.write_table("retrieval_results", retrieval_result.evidence)
+    if financial_result is not None:
+        duckdb.write_table("financial_results", financial_result.financial)
     manifest = build_manifest(
         paths=paths,
         corpus_result=corpus_result,
@@ -159,6 +182,8 @@ def run_pipeline(
         embedding_new=embedding_result.new_count,
         retrieval_count=retrieval_result.retrieval_count,
         retrieval_reused=retrieval_result.reused_count,
+        financial_count=len(financial_result.financial) if financial_result is not None else 0,
+        financial_seconds=financial_seconds,
         experiment=experiment,
         batch_count=len(batch_manifest),
         embedding_seconds=embedding_seconds,
@@ -179,6 +204,8 @@ def build_manifest(
     embedding_new: int,
     retrieval_count: int,
     retrieval_reused: int,
+    financial_count: int,
+    financial_seconds: float,
     experiment: dict,
     batch_count: int,
     embedding_seconds: float,
@@ -200,6 +227,7 @@ def build_manifest(
         "embedding_new": embedding_new,
         "retrieval_count": retrieval_count,
         "retrieval_reused": retrieval_reused,
+        "financial_count": financial_count,
         "runtime_seconds": round(total_seconds, 3),
         "parsing_time_seconds": round(corpus_result.parsing_seconds, 3),
         "ocr_time_seconds": round(corpus_result.ocr_seconds, 3),
@@ -211,6 +239,7 @@ def build_manifest(
         "chunking_time_seconds": round(corpus_result.chunking_seconds, 3),
         "embedding_time_seconds": round(embedding_seconds, 3),
         "retrieval_time_seconds": round(retrieval_seconds, 3),
+        "financial_time_seconds": round(financial_seconds, 3),
         "reports_per_hour": round(reports_per_hour, 3),
         "pages_per_hour": round(pages_per_hour, 3),
         "parsed_files": [str(path) for path in corpus_result.parsed_files],
@@ -219,6 +248,10 @@ def build_manifest(
         "embedding_manifest": str(paths.embeddings / "embedding_manifest.json"),
         "vectorstore": str(paths.vectorstore / "vectorstore.npz"),
         "evidence_dataset": str(paths.evidence_dataset),
+        "financial_dataset_csv": str(paths.financial_dataset_csv),
+        "financial_dataset_parquet": str(paths.financial_dataset_parquet),
+        "financial_runtime": str(paths.financial_runtime),
+        "financial_quality": str(paths.financial_quality),
         "chatgpt_batches": str(paths.chatgpt_batches),
         "chatgpt_batches_json": str(paths.chatgpt_batches_json),
         "chatgpt_prompt_package": str(paths.chatgpt_prompt_package),
@@ -265,6 +298,7 @@ def print_benchmark(manifest: dict) -> None:
     print(f"Chunking Time:  {manifest['chunking_time_seconds']}s")
     print(f"Embedding Time: {manifest['embedding_time_seconds']}s")
     print(f"Retrieval Time: {manifest['retrieval_time_seconds']}s")
+    print(f"Financial Time: {manifest.get('financial_time_seconds', 0.0)}s")
     print(f"Total Time:     {manifest['runtime_seconds']}s")
     print(f"Throughput:     {manifest['reports_per_hour']} reports/hour")
     print(f"Page Rate:      {manifest['pages_per_hour']} pages/hour")
@@ -294,6 +328,11 @@ def main() -> None:
     parser.add_argument("--retrieval-mode", choices=["bm25", "hybrid", "hybrid-rerank"], default="hybrid-rerank")
     parser.add_argument("--rerank-threshold", type=float, default=0.95)
     parser.add_argument("--warehouse-top-k", type=int, default=80)
+    parser.add_argument("--financial", action="store_true", help="Extract financial indicators after ESG retrieval using cached chunks/embeddings.")
+    parser.add_argument("--rebuild-financial", action="store_true", help="Rebuild financial warehouse and indicator cache.")
+    parser.add_argument("--rebuild-financial-pages", action="store_true", help="Rebuild financial page corpus from parsed/OCR cache.")
+    parser.add_argument("--financial-top-k", type=int, default=8)
+    parser.add_argument("--financial-warehouse-top-k", type=int, default=40)
     args = parser.parse_args()
 
     evidence = run_pipeline(
@@ -319,6 +358,11 @@ def main() -> None:
         retrieval_mode=args.retrieval_mode,
         rerank_threshold=args.rerank_threshold,
         warehouse_top_k=args.warehouse_top_k,
+        financial=args.financial,
+        rebuild_financial=args.rebuild_financial,
+        rebuild_financial_pages=args.rebuild_financial_pages,
+        financial_top_k=args.financial_top_k,
+        financial_warehouse_top_k=args.financial_warehouse_top_k,
     )
     print(f"\nWrote {len(evidence)} evidence records to {PipelinePaths().evidence_dataset}")
 

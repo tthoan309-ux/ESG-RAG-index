@@ -8,14 +8,14 @@ import pandas as pd
 from .config import PipelinePaths, RetrievalConfig
 from .export_evidence import load_codebook
 from .manifest_manager import ManifestManager, sha256_file
+from .ontology import OntologyManager
 from .retrieval_manager import retrieval_config_hash
 from .storage import read_table, write_table
-from .topic_manager import TopicManager
 
 
 def migrate_legacy_indicator_cache(root: Path | None = None) -> pd.DataFrame:
     paths = PipelinePaths(root=root or PipelinePaths().root)
-    codebook = TopicManager().assign(load_codebook(paths.indicators))
+    codebook = OntologyManager(paths.indicator_ontology).attach(load_codebook(paths.indicators))
     manifest = ManifestManager(paths.progress_manifest)
     config_hash = retrieval_config_hash(RetrievalConfig())
     rows: list[dict] = []
@@ -24,17 +24,18 @@ def migrate_legacy_indicator_cache(root: Path | None = None) -> pd.DataFrame:
         report_id = report.stem
         report_hash = _report_hash(report_id, report, manifest)
         company, year = _company_year(report_id)
-        for topic_id, group in codebook.groupby("topic_id"):
-            warehouse_path = paths.evidence_warehouse / f"{report_hash}_{topic_id}_{config_hash}.parquet"
+        for group_id, group in codebook.groupby(["domain", "subdomain"]):
+            ontology_group = "_".join(str(part).lower().replace(" ", "_").replace("/", "_") for part in group_id)
+            warehouse_path = paths.evidence_warehouse / f"{report_hash}_{ontology_group}_{config_hash}.parquet"
             if warehouse_path.exists():
-                rows.append({"report": report_id, "topic_id": topic_id, "status": "exists", "chunks": 0})
+                rows.append({"report": report_id, "ontology_group": ontology_group, "status": "exists", "chunks": 0})
                 continue
             chunks = _chunks_from_legacy_cache(paths, company, year, group)
             if not chunks:
-                rows.append({"report": report_id, "topic_id": topic_id, "status": "missing_legacy_cache", "chunks": 0})
+                rows.append({"report": report_id, "ontology_group": ontology_group, "status": "missing_legacy_cache", "chunks": 0})
                 continue
             write_table(warehouse_path, pd.DataFrame(chunks))
-            rows.append({"report": report_id, "topic_id": topic_id, "status": "migrated", "chunks": len(chunks)})
+            rows.append({"report": report_id, "ontology_group": ontology_group, "status": "migrated", "chunks": len(chunks)})
 
     report = pd.DataFrame(rows)
     report.to_csv(paths.root / "outputs" / "warehouse_migration_report.csv", index=False)

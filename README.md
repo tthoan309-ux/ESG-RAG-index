@@ -234,6 +234,155 @@ evidence_quality
 
 `evidence_quality` is set to `LOW_EVIDENCE` when fewer than two chunks are retrieved after deduplication.
 
+## ESG Index Aggregation
+
+After `outputs/evidence_dataset.csv` has been produced, build the firm-year ESG Disclosure Index with:
+
+```powershell
+python -m src.aggregator
+```
+
+Outputs:
+
+```text
+outputs/esg_index.csv
+outputs/indicator_score_panel.csv
+outputs/pipeline_artifacts/ESG_scores/pillar_breakdown.csv
+```
+
+The main index columns are:
+
+```text
+esg_index_equal_indicator = sum(50 indicator scores) / (50 * 3) * 100
+esg_index_equal_pillar    = mean(environment_index, social_index, governance_index)
+```
+
+Use `esg_index_equal_indicator` as the main index and `esg_index_equal_pillar` as a robustness check.
+
+## Financial Disclosure Engine
+
+The pipeline can also extract financial variables from the same cached annual-report corpus. It reuses parsed reports, OCR cache, chunks, embeddings, vector search, retrieval cache, and warehouse cache. It does not reread PDFs when cache artifacts exist.
+
+Financial indicator definitions live in:
+
+```text
+config/financial_indicators.yaml
+```
+
+Run financial extraction as a standalone cached job:
+
+```powershell
+python -m src.financial_engine --top-k 10 --warehouse-top-k 50
+```
+
+By default, this builds a separate financial-page corpus from `data/parsed_reports/*.parquet`, detects balance sheet, income statement, cash flow, notes, share, and employee pages, then retrieves only from that financial corpus.
+
+Rebuild the financial warehouse/cache:
+
+```powershell
+python -m src.financial_engine --top-k 10 --warehouse-top-k 50 --rebuild-financial-pages --rebuild-financial
+```
+
+If the parsed financial pages look incomplete, run targeted OCR before rebuilding the financial corpus:
+
+```powershell
+python -m src.financial_ocr --mode candidates --dpi 300 --neighbor-window 1
+python -m src.financial_engine --top-k 10 --warehouse-top-k 50 --rebuild-financial-pages --rebuild-financial
+```
+
+Targeted OCR is resume-safe and can be batched by report name. Each run appends to `data/financial_ocr_pages.parquet` and reuses `outputs/pipeline_artifacts/financial_ocr_cache/` unless `--force` is set:
+
+```powershell
+python -m src.financial_ocr --mode candidates --dpi 250 --neighbor-window 1 --workers 4 --include-glob ALC_2015
+python -m src.financial_ocr --mode candidates --dpi 250 --neighbor-window 1 --workers 4 --include-glob "*_2024.pdf"
+python -m src.financial_engine --top-k 10 --warehouse-top-k 50 --rebuild-financial-pages --rebuild-financial
+```
+
+For a slower but exhaustive pass over every page in every PDF:
+
+```powershell
+python -m src.financial_ocr --mode all --dpi 300
+python -m src.financial_engine --top-k 10 --warehouse-top-k 50 --rebuild-financial-pages --rebuild-financial
+```
+
+Use the old full-report retrieval scope only for comparison:
+
+```powershell
+python -m src.financial_engine --all-pages
+```
+
+Or attach financial extraction to the full ESG pipeline:
+
+```powershell
+python -m src.pipeline --resume --financial --financial-top-k 10 --financial-warehouse-top-k 50
+```
+
+Outputs:
+
+```text
+outputs/financial_dataset.csv
+outputs/financial_dataset.parquet
+outputs/financial_runtime.csv
+outputs/financial_quality.csv
+outputs/pipeline_artifacts/financial_pages.parquet
+outputs/pipeline_artifacts/financial_page_quality.csv
+outputs/pipeline_artifacts/financial_null_diagnosis.csv
+outputs/pipeline_artifacts/financial_ocr_cache/
+outputs/pipeline_artifacts/financial_ocr_runtime.csv
+outputs/pipeline_artifacts/financial_validation.csv
+outputs/pipeline_artifacts/financial_benchmark_report.md
+data/financial_chunks.parquet
+data/financial_embeddings.npy
+data/financial_ocr_pages.parquet
+```
+
+Financial dataset schema:
+
+```text
+firm
+year
+indicator_id
+indicator_name
+value
+currency
+unit
+source_report
+page
+confidence
+evidence
+extraction_method
+retrieval_score
+warehouse_group
+cache_hit
+warehouse_hit
+validation_flag
+```
+
+The engine retrieves by financial statement group rather than by individual variable:
+
+```text
+balance_sheet
+income_statement
+shares
+employees
+```
+
+This keeps model/vector-store loading to one time per run and avoids one retrieval pass per financial indicator. Table rows are preferred over narrative text when available. Values are normalized to VND for monetary indicators and left as counts for shares/employees.
+
+Validation flags include:
+
+```text
+TOTAL_ASSETS_GTE_EQUITY
+TOTAL_ASSETS_GTE_TOTAL_LIABILITIES
+REVENUE_NONNEGATIVE
+EMPLOYEES_NONNEGATIVE
+EXTREME_VND_VALUE
+EXTREME_SHARE_COUNT
+EXTREME_EMPLOYEE_COUNT
+```
+
+Rows with validation or anomaly flags should be reviewed before use in regression-ready financial controls.
+
 ## ChatGPT Plus Batch Workflow
 
 Each batch has a CSV and a matching prompt:

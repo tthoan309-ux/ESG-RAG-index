@@ -7,17 +7,17 @@ import pandas as pd
 
 from .config import PipelinePaths
 from .export_evidence import load_codebook
-from .topic_manager import TopicManager
+from .ontology import OntologyManager
 
 
 def build_warehouse_benchmark(root: Path | None = None) -> pd.DataFrame:
     paths = PipelinePaths(root=root or PipelinePaths().root)
-    codebook = TopicManager().assign(load_codebook(paths.indicators))
+    codebook = OntologyManager(paths.indicator_ontology).attach(load_codebook(paths.indicators))
     raw_reports = sorted(paths.raw_reports.glob("*.pdf"))
-    topics = codebook["topic_id"].nunique()
+    domains = codebook[["domain", "subdomain"]].drop_duplicates().shape[0]
     indicators = len(codebook)
     before = len(raw_reports) * indicators
-    after = len(raw_reports) * topics
+    after = len(raw_reports) * domains
     warehouse_files = list(paths.evidence_warehouse.glob("*.parquet")) if paths.evidence_warehouse.exists() else []
     expected_warehouse = max(after, 1)
     warehouse_hit_rate = min(len(warehouse_files), expected_warehouse) / expected_warehouse * 100
@@ -37,7 +37,7 @@ def build_warehouse_benchmark(root: Path | None = None) -> pd.DataFrame:
                 "call_reduction_percent": round(call_reduction, 3),
                 "reports": len(raw_reports),
                 "indicators": indicators,
-                "topics": topics,
+                "ontology_groups": domains,
                 "warehouse_files": len(warehouse_files),
             }
         ]

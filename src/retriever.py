@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import math
 import re
+import unicodedata
 from collections import Counter
 from pathlib import Path
 from typing import Any
@@ -174,7 +175,18 @@ class BM25Index:
 
 
 def tokenize(text: str) -> list[str]:
-    return [token.lower() for token in TOKEN_RE.findall(text)]
+    tokens: list[str] = []
+    for token in TOKEN_RE.findall(text.lower()):
+        normalized = strip_accents(token)
+        tokens.append(token)
+        if normalized != token:
+            tokens.append(normalized)
+    return tokens
+
+
+def strip_accents(text: str) -> str:
+    normalized = unicodedata.normalize("NFKD", text)
+    return "".join(char for char in normalized if not unicodedata.combining(char))
 
 
 def _indicator_value(indicator: Any, key: str, default: str) -> Any:

@@ -19,8 +19,10 @@ def build_batch_prompt(batch: pd.DataFrame, batch_id: str) -> str:
                 [
                     f"- {row['indicator_id']} | {row.get('indicator_name', '')}",
                     f"  Pillar: {row.get('pillar', '')}",
+                    f"  Domain: {row.get('domain', '')} / {row.get('subdomain', '')}",
                     f"  Framework: {row.get('framework', '')}",
                     f"  Definition: {row.get('definition', '')}",
+                    f"  Auto score: {row.get('score', '')} | Confidence: {row.get('confidence_label', '')}",
                 ]
             )
         )
@@ -31,7 +33,9 @@ Batch ID: {batch_id}
 
 Bạn là chuyên gia ESG.
 
-Nhiệm vụ: chấm tất cả các dòng trong file CSV đi kèm. Chỉ sử dụng evidence trong CSV. Không suy luận ngoài bằng chứng. Khi không chắc chắn, chọn điểm thấp hơn.
+Nhiệm vụ: kiểm tra và chấm tất cả các dòng trong file CSV đi kèm. Chỉ sử dụng evidence trong CSV. Không suy luận ngoài bằng chứng. Khi không chắc chắn, chọn điểm thấp hơn.
+
+Các cột `score`, `confidence`, `matched_keywords`, `matched_units`, `matched_negative_keywords`, và `reasoning` là audit trail tự động. Hãy dùng chúng để kiểm tra, nhưng điểm cuối cùng phải dựa trên evidence.
 
 ## Rubric
 

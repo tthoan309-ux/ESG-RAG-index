@@ -1,0 +1,126 @@
+indicator_id: S12
+name: Collective Bargaining
+name_vi: Thỏa ước lao động
+pillar: S
+domain: Employee Relations
+subdomain: Collective Bargaining
+frameworks:
+- GRI 2-30
+disclosure_type: policy
+formal_definition: Quan hệ lao động tập thể
+objective: disclose Collective Bargaining
+required_entities:
+- collective bargaining
+- trade union
+positive_keywords:
+- collective bargaining
+- trade union
+- Thỏa ước lao động
+- Collective Bargaining
+- Quan hệ lao động tập thể
+- thỏa ước lao động
+negative_keywords:
+- doanh thu
+alternative_phrases:
+- collective labor agreement
+- employee dialogue
+- labor agreement
+- collective bargaining
+units:
+- '%'
+- employees
+score_patterns:
+  qualitative:
+  - collective bargaining
+  - trade union
+  quantitative:
+  - '%'
+  - employees
+  - amount
+  - total
+  - ratio
+  - rate
+  - number
+  - volume
+  - collective bargaining
+  target:
+  - target
+  - goal
+  - roadmap
+  - kpi
+  - year-on-year
+target_patterns:
+- target
+- goal
+- roadmap
+- kpi
+- year-on-year
+required_evidence_patterns:
+- collective bargaining
+- trade union
+- '%'
+- employees
+false_positive_patterns:
+- doanh thu
+validation_rules:
+  must_contain_any:
+  - collective bargaining
+  - trade union
+  should_contain_any:
+  - '%'
+  - employees
+  - collective labor agreement
+  - employee dialogue
+  - labor agreement
+  - collective bargaining
+  reject_if_only:
+  - doanh thu
+score_0: no disclosure
+score_1: qualitative disclosure
+score_2: quantitative disclosure
+score_3: quantitative disclosure with target or achieved outcome
+hard_required:
+- collective bargaining
+- trade union
+soft_positive:
+- collective bargaining
+- trade union
+- Thỏa ước lao động
+- Quan hệ lao động tập thể
+- collective labor agreement
+- employee dialogue
+- labor agreement
+qualitative_patterns:
+- collective bargaining
+- trade union
+- Thỏa ước lao động
+- Quan hệ lao động tập thể
+- collective labor agreement
+- employee dialogue
+- labor agreement
+- policy
+- commitment
+- management
+- program
+- procedure
+- governance
+- committee
+- oversight
+- strategy
+- training
+- risk management
+- code of conduct
+- system
+- mechanism
+- initiative
+- practice
+- chinh sach
+- cam ket
+- quan ly
+- chuong trinh
+- quy trinh
+- uy ban
+- giam sat
+- dao tao
+- he thong
+quantitative_patterns: []

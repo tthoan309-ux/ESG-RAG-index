@@ -1,0 +1,162 @@
+TOTAL_ASSETS:
+  label_vi: "Tổng tài sản"
+  statement_group: "balance_sheet"
+  aliases:
+    - "Tổng tài sản"
+    - "Tổng cộng tài sản"
+    - "Tổng cộng tài sản có"
+    - "Total assets"
+    - "Total asset"
+  retrieval_queries:
+    - "bảng cân đối kế toán tổng tài sản"
+    - "tổng cộng tài sản"
+    - "total assets balance sheet"
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+CURRENT_ASSETS:
+  label_vi: "Tài sản ngắn hạn"
+  statement_group: "balance_sheet"
+  aliases: ["Tài sản ngắn hạn", "Tổng tài sản ngắn hạn", "Current assets", "Total current assets"]
+  retrieval_queries: ["bảng cân đối kế toán tài sản ngắn hạn", "current assets"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+NON_CURRENT_ASSETS:
+  label_vi: "Tài sản dài hạn"
+  statement_group: "balance_sheet"
+  aliases: ["Tài sản dài hạn", "Tổng tài sản dài hạn", "Non-current assets", "Long-term assets"]
+  retrieval_queries: ["bảng cân đối kế toán tài sản dài hạn", "non-current assets"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+TOTAL_LIABILITIES:
+  label_vi: "Nợ phải trả"
+  statement_group: "balance_sheet"
+  aliases: ["Nợ phải trả", "Tổng nợ phải trả", "Tổng cộng nợ phải trả", "Liabilities", "Total liabilities"]
+  retrieval_queries: ["bảng cân đối kế toán nợ phải trả", "total liabilities"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+CURRENT_LIABILITIES:
+  label_vi: "Nợ ngắn hạn"
+  statement_group: "balance_sheet"
+  aliases: ["Nợ ngắn hạn", "Tổng nợ ngắn hạn", "Current liabilities", "Short-term liabilities"]
+  retrieval_queries: ["bảng cân đối kế toán nợ ngắn hạn", "current liabilities"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+LONG_TERM_LIABILITIES:
+  label_vi: "Nợ dài hạn"
+  statement_group: "balance_sheet"
+  aliases: ["Nợ dài hạn", "Nợ phải trả dài hạn", "Long-term liabilities", "Non-current liabilities"]
+  retrieval_queries: ["bảng cân đối kế toán nợ dài hạn", "long-term liabilities"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+EQUITY:
+  label_vi: "Vốn chủ sở hữu"
+  statement_group: "balance_sheet"
+  aliases: ["Vốn chủ sở hữu", "Tổng vốn chủ sở hữu", "Owner's equity", "Shareholders' equity", "Equity"]
+  retrieval_queries: ["bảng cân đối kế toán vốn chủ sở hữu", "shareholders equity"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+CHARTER_CAPITAL:
+  label_vi: "Vốn điều lệ"
+  statement_group: "balance_sheet"
+  aliases: ["Vốn điều lệ", "Vốn góp của chủ sở hữu", "Charter capital", "Contributed capital"]
+  retrieval_queries: ["vốn điều lệ", "charter capital", "vốn góp của chủ sở hữu"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+REVENUE:
+  label_vi: "Doanh thu thuần"
+  statement_group: "income_statement"
+  aliases: ["Doanh thu thuần", "Doanh thu thuần về bán hàng và cung cấp dịch vụ", "Net revenue", "Revenue"]
+  retrieval_queries: ["báo cáo kết quả kinh doanh doanh thu thuần", "net revenue income statement"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+COGS:
+  label_vi: "Giá vốn hàng bán"
+  statement_group: "income_statement"
+  aliases: ["Giá vốn hàng bán", "Cost of goods sold", "Cost of sales", "COGS"]
+  retrieval_queries: ["báo cáo kết quả kinh doanh giá vốn hàng bán", "cost of goods sold"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+GROSS_PROFIT:
+  label_vi: "Lãi gộp"
+  statement_group: "income_statement"
+  aliases: ["Lãi gộp", "Lợi nhuận gộp", "Gross profit"]
+  retrieval_queries: ["báo cáo kết quả kinh doanh lãi gộp", "gross profit"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+FINANCIAL_INCOME:
+  label_vi: "Doanh thu tài chính"
+  statement_group: "income_statement"
+  aliases: ["Doanh thu tài chính", "Financial income", "Finance income"]
+  retrieval_queries: ["báo cáo kết quả kinh doanh doanh thu tài chính", "financial income"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+FINANCIAL_EXPENSE:
+  label_vi: "Chi phí tài chính"
+  statement_group: "income_statement"
+  aliases: ["Chi phí tài chính", "Financial expense", "Finance costs", "Finance expenses"]
+  retrieval_queries: ["báo cáo kết quả kinh doanh chi phí tài chính", "financial expense"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+OPERATING_PROFIT:
+  label_vi: "Lợi nhuận hoạt động kinh doanh"
+  statement_group: "income_statement"
+  aliases: ["Lợi nhuận hoạt động kinh doanh", "Lợi nhuận thuần từ hoạt động kinh doanh", "Operating profit"]
+  retrieval_queries: ["báo cáo kết quả kinh doanh lợi nhuận hoạt động kinh doanh", "operating profit"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+PROFIT_BEFORE_TAX:
+  label_vi: "Lợi nhuận trước thuế"
+  statement_group: "income_statement"
+  aliases: ["Lợi nhuận trước thuế", "Tổng lợi nhuận kế toán trước thuế", "Profit before tax", "PBT"]
+  retrieval_queries: ["báo cáo kết quả kinh doanh lợi nhuận trước thuế", "profit before tax"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+PROFIT_AFTER_TAX:
+  label_vi: "Lợi nhuận sau thuế"
+  statement_group: "income_statement"
+  aliases: ["Lợi nhuận sau thuế", "Lợi nhuận sau thuế thu nhập doanh nghiệp", "Profit after tax", "Net profit", "PAT"]
+  retrieval_queries: ["báo cáo kết quả kinh doanh lợi nhuận sau thuế", "profit after tax"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+CASH_AND_EQUIVALENTS:
+  label_vi: "Tiền và tương đương tiền"
+  statement_group: "balance_sheet"
+  aliases: ["Tiền và tương đương tiền", "Tiền và các khoản tương đương tiền", "Cash and cash equivalents"]
+  retrieval_queries: ["bảng cân đối kế toán tiền và tương đương tiền", "cash and cash equivalents"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+FINANCIAL_INVESTMENTS:
+  label_vi: "Đầu tư tài chính"
+  statement_group: "balance_sheet"
+  aliases: ["Đầu tư tài chính", "Đầu tư tài chính ngắn hạn", "Đầu tư tài chính dài hạn", "Financial investments"]
+  retrieval_queries: ["bảng cân đối kế toán đầu tư tài chính", "financial investments"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
+OUTSTANDING_SHARES:
+  label_vi: "Cổ phiếu đang lưu hành"
+  statement_group: "shares"
+  aliases: ["Cổ phiếu đang lưu hành", "Số cổ phiếu đang lưu hành", "Outstanding shares", "Shares outstanding"]
+  retrieval_queries: ["cổ phiếu đang lưu hành", "outstanding shares"]
+  unit_candidates: ["cổ phiếu", "shares"]
+  normalization_rules: {convert_to_vnd: false}
+TREASURY_SHARES:
+  label_vi: "Cổ phiếu quỹ"
+  statement_group: "shares"
+  aliases: ["Cổ phiếu quỹ", "Số cổ phiếu quỹ", "Treasury shares"]
+  retrieval_queries: ["cổ phiếu quỹ", "treasury shares"]
+  unit_candidates: ["cổ phiếu", "shares"]
+  normalization_rules: {convert_to_vnd: false}
+EMPLOYEES:
+  label_vi: "Số lao động"
+  statement_group: "employees"
+  aliases: ["Số lao động", "Số lượng lao động", "Tổng số lao động", "Người lao động", "Employees", "Number of employees"]
+  retrieval_queries: ["số lao động", "số lượng người lao động", "number of employees"]
+  unit_candidates: ["người", "lao động", "employees", "persons"]
+  normalization_rules: {convert_to_vnd: false}
+TRAINING_EXPENSE:
+  label_vi: "Chi phí đào tạo"
+  statement_group: "employees"
+  aliases: ["Chi phí đào tạo", "Kinh phí đào tạo", "Training expense", "Training cost"]
+  retrieval_queries: ["chi phí đào tạo nhân viên", "training expense"]
+  unit_candidates: ["VND", "đồng", "nghìn đồng", "triệu đồng", "tỷ đồng", "million VND", "billion VND"]
+  normalization_rules: {convert_to_vnd: true}
