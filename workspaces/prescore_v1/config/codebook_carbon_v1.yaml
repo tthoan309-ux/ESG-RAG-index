@@ -1,0 +1,175 @@
+codebook_version: carbon-disclosure-v1.0.0
+language: vi-en
+scope: Corporate carbon and climate disclosure in annual reports
+zero_rule: A score of 0 is allowed only after adequate report coverage. Missing retrieval evidence alone must be marked RETRIEVAL_UNRESOLVED.
+method_note: The anchors measure disclosure quality, not environmental performance and not compliance certification.
+
+indicators:
+  - indicator_id: C01
+    name: Climate governance
+    construct: Board and management oversight of climate-related matters
+    retrieval_queries: ["climate governance board oversight", "quản trị khí hậu hội đồng quản trị giám sát biến đổi khí hậu"]
+    evidence_requirements: ["Named governance body or role", "Climate-related responsibility or oversight process"]
+    exclusion_rules: ["Generic ESG commitment without governance responsibility", "Environmental department mentioned without climate remit"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No relevant governance disclosure after adequate coverage
+      1: Generic responsibility statement only
+      2: Named role or body with climate responsibility
+      3: Role plus oversight process, frequency, or escalation path
+      4: Board and management accountabilities with process, frequency, and decision linkage
+
+  - indicator_id: C02
+    name: Climate risks and opportunities
+    construct: Identification and assessment of climate-related risks or opportunities
+    retrieval_queries: ["climate risk transition risk physical risk opportunity", "rủi ro khí hậu rủi ro chuyển đổi rủi ro vật lý cơ hội"]
+    evidence_requirements: ["Climate-specific risk or opportunity", "Firm-specific exposure, horizon, or assessment process"]
+    exclusion_rules: ["Weather mentioned only as an operating event", "Generic global climate narrative"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No relevant disclosure after adequate coverage
+      1: Generic climate risk or opportunity mention
+      2: At least one firm-specific climate risk or opportunity
+      3: Multiple risks or opportunities with horizon, location, or business linkage
+      4: Structured assessment covering physical and transition dimensions with strategic or financial linkage
+
+  - indicator_id: C03
+    name: Scope 1 emissions
+    construct: Direct greenhouse-gas emissions disclosure
+    retrieval_queries: ["Scope 1 direct GHG emissions tCO2e", "phát thải phạm vi 1 trực tiếp tấn CO2 tương đương"]
+    evidence_requirements: ["Numeric Scope 1 value", "Unit and reporting period"]
+    exclusion_rules: ["Scope 1 target without actual emissions", "Combined total where Scope 1 cannot be separated"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No Scope 1 disclosure after adequate coverage
+      1: Scope 1 mentioned without an actual value
+      2: Numeric value with unit or period incomplete
+      3: Numeric value with unit, period, and organizational boundary or method
+      4: Level 3 plus comparison, restatement explanation, or external assurance
+
+  - indicator_id: C04
+    name: Scope 2 emissions
+    construct: Energy-indirect greenhouse-gas emissions disclosure
+    retrieval_queries: ["Scope 2 indirect emissions location based market based tCO2e", "phát thải phạm vi 2 gián tiếp điện năng tấn CO2 tương đương"]
+    evidence_requirements: ["Numeric Scope 2 value", "Unit and reporting period"]
+    exclusion_rules: ["Electricity consumption presented without emissions", "Combined emissions with no separable Scope 2"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No Scope 2 disclosure after adequate coverage
+      1: Scope 2 mentioned without an actual value
+      2: Numeric value with unit or period incomplete
+      3: Numeric value with unit, period, and location/market basis or method
+      4: Level 3 plus comparison, restatement explanation, or external assurance
+
+  - indicator_id: C05
+    name: Scope 3 emissions
+    construct: Value-chain greenhouse-gas emissions disclosure
+    retrieval_queries: ["Scope 3 value chain emissions categories tCO2e", "phát thải phạm vi 3 chuỗi giá trị danh mục tấn CO2 tương đương"]
+    evidence_requirements: ["Scope 3 actual value or category values", "Covered categories or boundary"]
+    exclusion_rules: ["Value-chain initiative with no Scope 3 disclosure", "Scope 3 aspiration only"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No Scope 3 disclosure after adequate coverage
+      1: Scope 3 mentioned without coverage or value
+      2: Partial category or numeric disclosure with material gaps
+      3: Numeric disclosure with categories, period, and method or boundary
+      4: Level 3 plus material-category justification, comparison, or assurance
+
+  - indicator_id: C06
+    name: GHG accounting basis
+    construct: Boundary, methodology, gases, factors, and base-year transparency
+    retrieval_queries: ["GHG Protocol boundary methodology emission factor base year", "phương pháp kiểm kê khí nhà kính ranh giới hệ số phát thải năm cơ sở"]
+    evidence_requirements: ["Accounting method, boundary, factor source, gases, or base year", "Firm-specific application"]
+    exclusion_rules: ["A standards logo or list without application details", "Methodology for a non-GHG metric"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No accounting-basis disclosure after adequate coverage
+      1: Standard or methodology named only
+      2: One substantive boundary or method detail
+      3: Boundary, method/factors, gases or base year described coherently
+      4: Level 3 plus recalculation/restatement policy and material exclusions
+
+  - indicator_id: C07
+    name: Emissions intensity
+    construct: Normalized greenhouse-gas emissions metric
+    retrieval_queries: ["GHG emissions intensity carbon intensity revenue production", "cường độ phát thải khí nhà kính doanh thu sản lượng"]
+    evidence_requirements: ["Numeric emissions intensity", "Clearly defined denominator and period"]
+    exclusion_rules: ["Energy intensity only", "Percentage reduction with no intensity denominator"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No emissions-intensity disclosure after adequate coverage
+      1: Intensity discussed without a numeric metric
+      2: Numeric metric but denominator, scope, or period incomplete
+      3: Numeric metric with denominator, emissions scope, and period
+      4: Level 3 plus consistent comparison and explanation of material change
+
+  - indicator_id: C08
+    name: Emissions target
+    construct: Time-bound greenhouse-gas emissions reduction target
+    retrieval_queries: ["emissions reduction target net zero baseline target year", "mục tiêu giảm phát thải phát thải ròng bằng không năm cơ sở năm mục tiêu"]
+    evidence_requirements: ["Target magnitude or end state", "Target year", "Baseline and emissions scope where applicable"]
+    exclusion_rules: ["Aspirational language without date or magnitude", "Energy target with no emissions linkage"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No emissions target after adequate coverage
+      1: General reduction or net-zero aspiration
+      2: Target has a date or magnitude but key parameters are missing
+      3: Magnitude/end state, target year, baseline, and scope are substantially defined
+      4: Level 3 plus interim milestones, governance, validation, or progress tracking
+
+  - indicator_id: C09
+    name: Target progress
+    construct: Quantified progress against an emissions target
+    retrieval_queries: ["progress against emissions target achieved reduction baseline", "tiến độ mục tiêu giảm phát thải kết quả so với năm cơ sở"]
+    evidence_requirements: ["Current measured result", "Explicit comparison with target or baseline"]
+    exclusion_rules: ["Target repeated with no current result", "Activity completion with no emissions outcome"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No progress disclosure after adequate coverage
+      1: Qualitative claim of progress only
+      2: Current result reported but target comparison is incomplete
+      3: Quantified current result compared with baseline or target
+      4: Level 3 plus trajectory, variance explanation, and corrective action
+
+  - indicator_id: C10
+    name: Transition actions
+    construct: Concrete actions and resources for emissions reduction or climate transition
+    retrieval_queries: ["climate transition plan decarbonization capex renewable efficiency", "kế hoạch chuyển đổi khí hậu khử carbon đầu tư năng lượng tái tạo hiệu quả năng lượng"]
+    evidence_requirements: ["Firm-specific action", "Implementation status, timing, resource, or expected effect"]
+    exclusion_rules: ["Standalone philanthropy", "Generic environmental slogan"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No transition-action disclosure after adequate coverage
+      1: Generic action or intention
+      2: One or more specific actions described
+      3: Actions include timing, implementation status, resources, or expected emissions effect
+      4: Integrated transition plan with milestones, dependencies, capital allocation, and monitoring
+
+  - indicator_id: C11
+    name: Energy profile
+    construct: Energy consumption and renewable/non-renewable mix relevant to emissions
+    retrieval_queries: ["energy consumption renewable energy mix MWh GJ", "tiêu thụ năng lượng năng lượng tái tạo cơ cấu điện MWh GJ"]
+    evidence_requirements: ["Numeric energy value", "Unit, period, and renewable or source breakdown when claimed"]
+    exclusion_rules: ["Cost of electricity only", "Equipment efficiency claim without consumption data"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No energy-profile disclosure after adequate coverage
+      1: Energy use or renewables mentioned without a numeric value
+      2: Numeric consumption or renewable share with incomplete scope/period
+      3: Numeric consumption with period, boundary, and source or renewable split
+      4: Level 3 plus consistent comparison and direct linkage to emissions strategy
+
+  - indicator_id: C12
+    name: External assurance
+    construct: Independent assurance of GHG or climate disclosures
+    retrieval_queries: ["independent assurance GHG emissions limited assurance verification", "đảm bảo độc lập xác minh phát thải khí nhà kính kiểm chứng"]
+    evidence_requirements: ["Independent assurance provider or assurance statement", "Assured subject matter and level/scope"]
+    exclusion_rules: ["Financial audit alone", "Internal review described as independent assurance"]
+    score_type: ordinal_disclosure_quality_0_4
+    rubric:
+      0: No climate/GHG assurance disclosure after adequate coverage
+      1: Verification or assurance claimed without provider or scope
+      2: Provider or assured subject matter identified, but scope/level incomplete
+      3: Independent provider, subject matter, period, scope, and assurance level identified
+      4: Level 3 plus published opinion/conclusion and methodology or standards used
+

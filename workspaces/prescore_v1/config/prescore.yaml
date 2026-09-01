@@ -1,0 +1,17 @@
+codebook_path: config/codebook_carbon_v1.yaml
+prompt_template_path: prompts/chatgpt_plus_scoring.md
+
+chunking:
+  target_words: 220
+  overlap_words: 40
+
+retrieval:
+  mode: bm25
+  top_k: 6
+  min_bm25_score: 0.05
+  dense_model: BAAI/bge-m3
+  min_dense_score: 0.25
+  rrf_k: 60
+
+batching:
+  max_firm_years_per_batch: 1

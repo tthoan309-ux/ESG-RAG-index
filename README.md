@@ -2,6 +2,10 @@
 
 A reproducible evidence-preparation pipeline for constructing a firm-year ESG Disclosure Quality Index from annual, sustainability, ESG, or integrated reports.
 
+## Isolated Pre-Score Workspace
+
+The repository includes a new clean-room workspace for corpus-to-evidence preparation at [workspaces/prescore_v1/README.md](workspaces/prescore_v1/README.md). It validates the source corpus, chunks page-aware text, retrieves evidence candidates, writes review queues, and creates ChatGPT Plus batch ZIPs. It deliberately stops before scoring and leaves the legacy ESG pipeline behavior unchanged.
+
 This version is designed for a ChatGPT Plus workflow. It does not call the OpenAI API and does not score indicators automatically inside the pipeline.
 
 ```text

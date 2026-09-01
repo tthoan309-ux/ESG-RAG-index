@@ -1,0 +1,5 @@
+outputs/
+data/
+*.parquet
+*.zip
+
