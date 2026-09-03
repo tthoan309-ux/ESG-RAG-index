@@ -4,6 +4,7 @@ import csv
 import hashlib
 import json
 import os
+import re
 import time
 import urllib.error
 import urllib.request
@@ -343,11 +344,32 @@ def _parse_json_text(text: str) -> dict[str, Any]:
     try:
         return json.loads(stripped)
     except json.JSONDecodeError:
+        repaired = _repair_common_json_model_errors(stripped)
+        if repaired != stripped:
+            try:
+                return json.loads(repaired)
+            except json.JSONDecodeError:
+                pass
         start = stripped.find("{")
         end = stripped.rfind("}")
         if start >= 0 and end > start:
-            return json.loads(stripped[start : end + 1])
+            fragment = stripped[start : end + 1]
+            repaired = _repair_common_json_model_errors(fragment)
+            return json.loads(repaired)
         raise
+
+
+def _repair_common_json_model_errors(text: str) -> str:
+    repaired = text
+    string_fields = {
+        "confidence": CONFIDENCE_VALUES,
+        "disclosure_status": DISCLOSURE_STATUS_VALUES,
+    }
+    for field, allowed_values in string_fields.items():
+        allowed = "|".join(re.escape(value) for value in sorted(allowed_values))
+        pattern = rf'("{field}"\s*:\s*)({allowed})(\s*[,}}])'
+        repaired = re.sub(pattern, r'\1"\2"\3', repaired)
+    return repaired
 
 
 def normalize_scoring_result(row: dict[str, Any], result: dict[str, Any], config: APIScoringConfig) -> dict[str, Any]:

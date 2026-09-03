@@ -113,6 +113,20 @@ def test_extract_json_response_accepts_markdown_json_fence():
     assert extract_json_response(response)["score"] == 2
 
 
+def test_extract_json_response_repairs_unquoted_known_enum_value():
+    response = {
+        "choices": [
+            {
+                "message": {
+                    "content": '{"score": 1, "confidence": medium, "disclosure_status": "DISCLOSED", "reasoning": "ok"}',
+                }
+            }
+        ]
+    }
+    parsed = extract_json_response(response)
+    assert parsed["confidence"] == "medium"
+
+
 def test_validate_rejects_unknown_evidence_chunk_id():
     output = normalize_scoring_result(
         _row(),
