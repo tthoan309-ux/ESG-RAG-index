@@ -214,7 +214,7 @@ def build_api_config(provider: str, model: str | None = None) -> APIScoringConfi
     if normalized == "openrouter":
         return APIScoringConfig(
             provider="openrouter",
-            model=model or "google/gemma-4-31b-it:free",
+            model=model or "minimax/minimax-m3:free",
             api_base="https://openrouter.ai/api/v1",
             prompt_version="api-scoring-openrouter-v0.1",
         )

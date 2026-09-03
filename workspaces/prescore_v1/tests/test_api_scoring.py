@@ -79,11 +79,11 @@ def test_build_request_payload_uses_structured_json_schema():
 def test_build_request_payload_supports_openrouter_chat_schema():
     config = APIScoringConfig(
         provider="openrouter",
-        model="google/gemma-4-31b-it:free",
+        model="minimax/minimax-m3:free",
         api_base="https://openrouter.ai/api/v1",
     )
     payload = build_request_payload(_row(), _candidates(), _codebook(), config)
-    assert payload["model"] == "google/gemma-4-31b-it:free"
+    assert payload["model"] == "minimax/minimax-m3:free"
     assert payload["response_format"]["type"] == "json_schema"
     assert payload["response_format"]["json_schema"]["schema"]["properties"]["score"]["anyOf"][0]["enum"] == [
         0,
@@ -99,7 +99,7 @@ def test_build_request_payload_supports_openrouter_chat_schema():
 def test_build_api_config_defaults_to_free_openrouter_model():
     config = build_api_config("openrouter")
     assert config.provider == "openrouter"
-    assert config.model == "google/gemma-4-31b-it:free"
+    assert config.model == "minimax/minimax-m3:free"
     assert config.api_base == "https://openrouter.ai/api/v1"
 
 
