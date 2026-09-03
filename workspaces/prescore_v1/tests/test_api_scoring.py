@@ -85,16 +85,12 @@ def test_build_request_payload_supports_openrouter_chat_schema():
     )
     payload = build_request_payload(_row(), _candidates(), _codebook(), config)
     assert payload["model"] == "minimax/minimax-m3:free"
-    assert payload["response_format"]["type"] == "json_schema"
-    assert payload["response_format"]["json_schema"]["schema"]["properties"]["score"]["anyOf"][0]["enum"] == [
-        0,
-        1,
-        2,
-        3,
-        4,
-    ]
+    assert payload["response_format"]["type"] == "json_object"
     assert "messages" in payload
     assert "input" not in payload
+    assert "Return exactly one valid JSON object" in payload["messages"][0]["content"]
+    user_content = json.loads(payload["messages"][1]["content"])
+    assert "required_output_json" in user_content
 
 
 def test_build_api_config_defaults_to_free_openrouter_model():
