@@ -58,7 +58,7 @@ Build request payloads without calling the API:
 ```bash
 python workspaces/prescore_v1/run_api_scoring.py \
   --provider openrouter \
-  --model z-ai/glm-5.2:free \
+  --model google/gemma-4-31b-it:free \
   --run-dir workspaces/prescore_v1/outputs/pilot_2015_from_financialdistress \
   --output-dir workspaces/prescore_v1/outputs/api_scoring_openrouter_dry_run \
   --limit 1 \
@@ -71,7 +71,7 @@ Run one real OpenRouter scoring call:
 set OPENROUTER_API_KEY=sk-or-v1-...
 python workspaces/prescore_v1/run_api_scoring.py \
   --provider openrouter \
-  --model z-ai/glm-5.2:free \
+  --model google/gemma-4-31b-it:free \
   --run-dir workspaces/prescore_v1/outputs/pilot_2015_from_financialdistress \
   --output-dir workspaces/prescore_v1/outputs/api_scoring_openrouter_001 \
   --limit 1
