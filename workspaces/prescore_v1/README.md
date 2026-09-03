@@ -49,6 +49,33 @@ For each ZIP under `chatgpt_plus_batches/`, start a fresh chat and upload that o
 
 Do not edit `SCORING_INPUT.csv`, `CODEBOOK.yaml`, or `EVIDENCE.md` after packaging. `batch_manifest.csv` contains the ZIP hash for audit.
 
+## 4. Optional API scoring pilot
+
+The default workspace still stops before scoring. API scoring is a separate pilot path for controlled experiments after a pre-score run exists.
+
+Build request payloads without calling the API:
+
+```bash
+python workspaces/prescore_v1/run_api_scoring.py \
+  --run-dir workspaces/prescore_v1/outputs/pilot_2015_from_financialdistress \
+  --output-dir workspaces/prescore_v1/outputs/api_scoring_pilot_dry_run \
+  --limit 1 \
+  --dry-run
+```
+
+Run one real API scoring call:
+
+```bash
+set OPENAI_API_KEY=sk-...
+python workspaces/prescore_v1/run_api_scoring.py \
+  --run-dir workspaces/prescore_v1/outputs/pilot_2015_from_financialdistress \
+  --output-dir workspaces/prescore_v1/outputs/api_scoring_pilot_001 \
+  --limit 1 \
+  --model gpt-4o-mini
+```
+
+The API path writes `api_scoring_rows.csv`, `api_validation_errors.csv`, `raw_api_outputs.jsonl`, and `api_scoring_manifest.json`. It validates score anchors, confidence labels, disclosure status, cited chunk IDs, and report-level page provenance. Keep this as an experiment until the final codebook and validation protocol are locked.
+
 ## Outputs
 
 - `chunks.parquet`: deterministic page-aware chunks
@@ -64,4 +91,3 @@ Do not edit `SCORING_INPUT.csv`, `CODEBOOK.yaml`, or `EVIDENCE.md` after packagi
 ```bash
 pytest -q workspaces/prescore_v1/tests
 ```
-
