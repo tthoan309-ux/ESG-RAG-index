@@ -105,8 +105,8 @@ def run_api_scoring(
         for attempt in range(config.retries + 1):
             try:
                 response = call_model_api(payload, key, config)
-                result = extract_json_response(response)
                 raw_outputs[-1]["response"] = response
+                result = extract_json_response(response)
                 break
             except Exception as exc:
                 error = f"{type(exc).__name__}: {exc}"
@@ -307,15 +307,38 @@ def extract_json_response(response: dict[str, Any]) -> dict[str, Any]:
     if isinstance(choices, list) and choices:
         content = choices[0].get("message", {}).get("content")
         if isinstance(content, str) and content.strip():
-            return json.loads(content)
+            return _parse_json_text(content)
+        if isinstance(content, list):
+            for item in content:
+                if isinstance(item, dict) and isinstance(item.get("text"), str) and item["text"].strip():
+                    return _parse_json_text(item["text"])
     if isinstance(response.get("output_text"), str):
-        return json.loads(response["output_text"])
+        return _parse_json_text(response["output_text"])
     for item in response.get("output", []):
         for content in item.get("content", []):
             text = content.get("text")
             if isinstance(text, str) and text.strip():
-                return json.loads(text)
+                return _parse_json_text(text)
     raise ValueError("Could not find JSON text in API response.")
+
+
+def _parse_json_text(text: str) -> dict[str, Any]:
+    stripped = text.strip()
+    if stripped.startswith("```"):
+        lines = stripped.splitlines()
+        if lines and lines[0].startswith("```"):
+            lines = lines[1:]
+        if lines and lines[-1].startswith("```"):
+            lines = lines[:-1]
+        stripped = "\n".join(lines).strip()
+    try:
+        return json.loads(stripped)
+    except json.JSONDecodeError:
+        start = stripped.find("{")
+        end = stripped.rfind("}")
+        if start >= 0 and end > start:
+            return json.loads(stripped[start : end + 1])
+        raise
 
 
 def normalize_scoring_result(row: dict[str, Any], result: dict[str, Any], config: APIScoringConfig) -> dict[str, Any]:

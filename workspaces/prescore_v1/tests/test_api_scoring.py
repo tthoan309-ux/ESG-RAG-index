@@ -8,6 +8,7 @@ from esg_prescore.api_scoring import (
     APIScoringConfig,
     build_api_config,
     build_request_payload,
+    extract_json_response,
     normalize_scoring_result,
     run_api_scoring,
     validate_scoring_result,
@@ -101,6 +102,19 @@ def test_build_api_config_defaults_to_free_openrouter_model():
     assert config.provider == "openrouter"
     assert config.model == "minimax/minimax-m3:free"
     assert config.api_base == "https://openrouter.ai/api/v1"
+
+
+def test_extract_json_response_accepts_markdown_json_fence():
+    response = {
+        "choices": [
+            {
+                "message": {
+                    "content": '```json\n{"score": 2, "confidence": "medium"}\n```',
+                }
+            }
+        ]
+    }
+    assert extract_json_response(response)["score"] == 2
 
 
 def test_validate_rejects_unknown_evidence_chunk_id():
