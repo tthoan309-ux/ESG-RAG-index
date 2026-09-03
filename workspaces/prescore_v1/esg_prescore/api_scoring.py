@@ -46,6 +46,7 @@ DISCLOSURE_STATUS_VALUES = {
 
 @dataclass(frozen=True)
 class APIScoringConfig:
+    provider: str = "openai"
     model: str = "gpt-4o-mini"
     api_base: str = "https://api.openai.com/v1"
     timeout_seconds: int = 90
@@ -58,7 +59,8 @@ def run_api_scoring(
     run_dir: str | Path,
     output_dir: str | Path,
     *,
-    model: str = "gpt-4o-mini",
+    provider: str = "openai",
+    model: str | None = None,
     limit: int = 1,
     dry_run: bool = False,
     api_key: str | None = None,
@@ -69,7 +71,7 @@ def run_api_scoring(
         raise FileExistsError(f"Output directory must be empty: {output_dir}")
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    config = APIScoringConfig(model=model)
+    config = build_api_config(provider, model)
     scoring_rows = pd.read_csv(run_dir / "scoring_rows.csv")
     candidates = pd.read_parquet(run_dir / "evidence_candidates.parquet")
     codebook = _load_codebook_for_run(run_dir)
@@ -94,15 +96,15 @@ def run_api_scoring(
         if dry_run:
             continue
 
-        key = api_key or os.environ.get("OPENAI_API_KEY")
+        key = api_key or api_key_from_environment(config.provider)
         if not key:
-            raise RuntimeError("OPENAI_API_KEY is required unless --dry-run is set.")
+            raise RuntimeError(f"{api_key_environment_name(config.provider)} is required unless --dry-run is set.")
 
         result: dict[str, Any] | None = None
         error = ""
         for attempt in range(config.retries + 1):
             try:
-                response = call_responses_api(payload, key, config)
+                response = call_model_api(payload, key, config)
                 result = extract_json_response(response)
                 raw_outputs[-1]["response"] = response
                 break
@@ -142,7 +144,8 @@ def run_api_scoring(
         "created_at_utc": datetime.now(timezone.utc).isoformat(),
         "run_dir": str(run_dir),
         "output_dir": str(output_dir),
-        "model": model,
+        "provider": config.provider,
+        "model": config.model,
         "prompt_version": config.prompt_version,
         "dry_run": dry_run,
         "requested_rows": len(ready),
@@ -187,41 +190,78 @@ def build_request_payload(
         ],
         "evidence": evidence,
     }
+    messages = [
+        {"role": "system", "content": system},
+        {"role": "user", "content": json.dumps(user, ensure_ascii=False)},
+    ]
+    if config.provider == "openrouter":
+        return {
+            "model": config.model,
+            "temperature": 0,
+            "messages": messages,
+            "response_format": {"type": "json_schema", "json_schema": scoring_json_schema()},
+        }
     return {
         "model": config.model,
         "temperature": 0,
-        "input": [
-            {"role": "system", "content": system},
-            {"role": "user", "content": json.dumps(user, ensure_ascii=False)},
-        ],
-        "text": {
-            "format": {
-                "type": "json_schema",
-                "name": "esg_api_scoring_result",
-                "strict": True,
-                "schema": {
-                    "type": "object",
-                    "additionalProperties": False,
-                    "properties": {
-                        "score": {"anyOf": [{"type": "integer", "enum": [0, 1, 2, 3, 4]}, {"type": "null"}]},
-                        "confidence": {"type": "string", "enum": sorted(CONFIDENCE_VALUES)},
-                        "disclosure_status": {"type": "string", "enum": sorted(DISCLOSURE_STATUS_VALUES)},
-                        "evidence_chunk_ids": {"type": "string"},
-                        "evidence_pages": {"type": "string"},
-                        "reasoning": {"type": "string"},
-                    },
-                    "required": [
-                        "score",
-                        "confidence",
-                        "disclosure_status",
-                        "evidence_chunk_ids",
-                        "evidence_pages",
-                        "reasoning",
-                    ],
-                },
-            }
+        "input": messages,
+        "text": {"format": {"type": "json_schema", **scoring_json_schema()}},
+    }
+
+
+def build_api_config(provider: str, model: str | None = None) -> APIScoringConfig:
+    normalized = provider.lower().strip()
+    if normalized == "openrouter":
+        return APIScoringConfig(
+            provider="openrouter",
+            model=model or "z-ai/glm-5.2:free",
+            api_base="https://openrouter.ai/api/v1",
+            prompt_version="api-scoring-openrouter-v0.1",
+        )
+    if normalized == "openai":
+        return APIScoringConfig(provider="openai", model=model or "gpt-4o-mini")
+    raise ValueError("provider must be 'openai' or 'openrouter'.")
+
+
+def api_key_environment_name(provider: str) -> str:
+    return "OPENROUTER_API_KEY" if provider == "openrouter" else "OPENAI_API_KEY"
+
+
+def api_key_from_environment(provider: str) -> str | None:
+    return os.environ.get(api_key_environment_name(provider))
+
+
+def scoring_json_schema() -> dict[str, Any]:
+    return {
+        "name": "esg_api_scoring_result",
+        "strict": True,
+        "schema": {
+            "type": "object",
+            "additionalProperties": False,
+            "properties": {
+                "score": {"anyOf": [{"type": "integer", "enum": [0, 1, 2, 3, 4]}, {"type": "null"}]},
+                "confidence": {"type": "string", "enum": sorted(CONFIDENCE_VALUES)},
+                "disclosure_status": {"type": "string", "enum": sorted(DISCLOSURE_STATUS_VALUES)},
+                "evidence_chunk_ids": {"type": "string"},
+                "evidence_pages": {"type": "string"},
+                "reasoning": {"type": "string"},
+            },
+            "required": [
+                "score",
+                "confidence",
+                "disclosure_status",
+                "evidence_chunk_ids",
+                "evidence_pages",
+                "reasoning",
+            ],
         },
     }
+
+
+def call_model_api(payload: dict[str, Any], api_key: str, config: APIScoringConfig) -> dict[str, Any]:
+    if config.provider == "openrouter":
+        return call_openrouter_chat_api(payload, api_key, config)
+    return call_responses_api(payload, api_key, config)
 
 
 def call_responses_api(payload: dict[str, Any], api_key: str, config: APIScoringConfig) -> dict[str, Any]:
@@ -242,7 +282,32 @@ def call_responses_api(payload: dict[str, Any], api_key: str, config: APIScoring
         raise RuntimeError(f"OpenAI API HTTP {exc.code}: {body}") from exc
 
 
+def call_openrouter_chat_api(payload: dict[str, Any], api_key: str, config: APIScoringConfig) -> dict[str, Any]:
+    request = urllib.request.Request(
+        f"{config.api_base.rstrip('/')}/chat/completions",
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+            "HTTP-Referer": "https://github.com/tthoan309-ux/ESG-RAG-index",
+            "X-Title": "ESG Pre-score API Pilot",
+        },
+        method="POST",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=config.timeout_seconds) as response:
+            return json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"OpenRouter API HTTP {exc.code}: {body}") from exc
+
+
 def extract_json_response(response: dict[str, Any]) -> dict[str, Any]:
+    choices = response.get("choices")
+    if isinstance(choices, list) and choices:
+        content = choices[0].get("message", {}).get("content")
+        if isinstance(content, str) and content.strip():
+            return json.loads(content)
     if isinstance(response.get("output_text"), str):
         return json.loads(response["output_text"])
     for item in response.get("output", []):

@@ -15,7 +15,8 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Optional API scoring pilot for an existing pre-score run.")
     parser.add_argument("--run-dir", required=True, help="Existing prescore output directory.")
     parser.add_argument("--output-dir", required=True, help="New or empty output directory for API scoring outputs.")
-    parser.add_argument("--model", default="gpt-4o-mini")
+    parser.add_argument("--provider", choices=["openai", "openrouter"], default="openai")
+    parser.add_argument("--model", default=None, help="Model override. Defaults to provider-specific pilot model.")
     parser.add_argument("--limit", type=int, default=1, help="Rows to score. Default is one row for cost-safe testing.")
     parser.add_argument("--dry-run", action="store_true", help="Build request payloads without calling the API.")
     return parser.parse_args()
@@ -26,6 +27,7 @@ def main() -> None:
     manifest = run_api_scoring(
         run_dir=args.run_dir,
         output_dir=args.output_dir,
+        provider=args.provider,
         model=args.model,
         limit=args.limit,
         dry_run=args.dry_run,

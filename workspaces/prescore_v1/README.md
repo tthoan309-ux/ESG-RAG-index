@@ -57,24 +57,27 @@ Build request payloads without calling the API:
 
 ```bash
 python workspaces/prescore_v1/run_api_scoring.py \
+  --provider openrouter \
+  --model z-ai/glm-5.2:free \
   --run-dir workspaces/prescore_v1/outputs/pilot_2015_from_financialdistress \
-  --output-dir workspaces/prescore_v1/outputs/api_scoring_pilot_dry_run \
+  --output-dir workspaces/prescore_v1/outputs/api_scoring_openrouter_dry_run \
   --limit 1 \
   --dry-run
 ```
 
-Run one real API scoring call:
+Run one real OpenRouter scoring call:
 
 ```bash
-set OPENAI_API_KEY=sk-...
+set OPENROUTER_API_KEY=sk-or-v1-...
 python workspaces/prescore_v1/run_api_scoring.py \
+  --provider openrouter \
+  --model z-ai/glm-5.2:free \
   --run-dir workspaces/prescore_v1/outputs/pilot_2015_from_financialdistress \
-  --output-dir workspaces/prescore_v1/outputs/api_scoring_pilot_001 \
-  --limit 1 \
-  --model gpt-4o-mini
+  --output-dir workspaces/prescore_v1/outputs/api_scoring_openrouter_001 \
+  --limit 1
 ```
 
-The API path writes `api_scoring_rows.csv`, `api_validation_errors.csv`, `raw_api_outputs.jsonl`, and `api_scoring_manifest.json`. It validates score anchors, confidence labels, disclosure status, cited chunk IDs, and report-level page provenance. Keep this as an experiment until the final codebook and validation protocol are locked.
+OpenAI is still available with `--provider openai --model gpt-4o-mini` and `OPENAI_API_KEY`. The API path writes `api_scoring_rows.csv`, `api_validation_errors.csv`, `raw_api_outputs.jsonl`, and `api_scoring_manifest.json`. It validates score anchors, confidence labels, disclosure status, cited chunk IDs, and report-level page provenance. Keep this as an experiment until the final codebook and validation protocol are locked.
 
 ## Outputs
 
