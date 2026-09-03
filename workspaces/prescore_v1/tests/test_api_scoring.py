@@ -15,12 +15,12 @@ from esg_prescore.api_scoring import (
 )
 
 
-def _row() -> dict:
+def _row(indicator_id: str = "C03") -> dict:
     return {
         "scoring_row_id": "row_1",
         "ticker": "AAA",
         "year": 2023,
-        "indicator_id": "C03",
+        "indicator_id": indicator_id,
         "indicator_name": "Scope 1 emissions",
         "construct": "Direct emissions",
         "score_type": "ordinal_disclosure_quality_0_4",
@@ -141,6 +141,10 @@ def test_api_scoring_dry_run_writes_no_scored_rows(tmp_path):
     import yaml
 
     (batch_dir / "CODEBOOK.yaml").write_text(yaml.safe_dump(_codebook()), encoding="utf-8")
+
+    # Batch-level codebooks may contain only the indicators present in that
+    # manual batch. API scoring must load the workspace's full codebook instead.
+    pd.DataFrame([_row("C01")]).to_csv(run_dir / "scoring_rows.csv", index=False)
 
     manifest = run_api_scoring(run_dir, output_dir, dry_run=True, limit=1)
     assert manifest["dry_run"] is True

@@ -401,9 +401,9 @@ def validate_scoring_result(output: dict[str, Any], row: dict[str, Any], candida
 
 
 def _load_codebook_for_run(run_dir: Path) -> dict[str, Any]:
-    codebook_path = run_dir / "chatgpt_plus_batches" / "batch_0001" / "CODEBOOK.yaml"
+    codebook_path = Path(__file__).resolve().parents[1] / "config" / "codebook_carbon_v1.yaml"
     if not codebook_path.exists():
-        codebook_path = Path(__file__).resolve().parents[1] / "config" / "codebook_carbon_v1.yaml"
+        codebook_path = run_dir / "chatgpt_plus_batches" / "batch_0001" / "CODEBOOK.yaml"
     return yaml.safe_load(codebook_path.read_text(encoding="utf-8"))
 
 
